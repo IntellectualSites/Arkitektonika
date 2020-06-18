@@ -9,7 +9,7 @@
     "transpile": "babel ./app --out-dir dist",
     "clean": "rimraf dist",
     "build": "yarn run clean && yarn run transpile",
-    "dev": "NODE_ENV=development yarn run build && NODE_ENV=development yarn run server",
+    "dev": "NODE_ENV=development yarn run build && DEBUG=* NODE_ENV=development yarn run server",
     "watch:dev": "nodemon",
     "prod": "NODE_ENV=production yarn run build && NODE_ENV=production yarn run server"
   },
