@@ -1,10 +1,15 @@
 import express from 'express'
 const router = express.Router();
 
-/* GET home page. */
+/* GET / */
 router.get('/', function(req, res, next) {
   res.json({
-    message: 'index!'
+    name: process.env.npm_package_name,
+    version: process.env.npm_package_version,
+    made: {
+      with: 'love',
+      by: 'IntellectualSites'
+    }
   })
 });
 
