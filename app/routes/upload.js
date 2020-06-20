@@ -1,9 +1,56 @@
 import express from 'express'
-const router = express.Router();
+import multer from 'multer'
+import filesystem from '../util/filesystem'
+import nbt from '../util/nbt'
+import { v4 as uuidv4 } from 'uuid'
 
-/* POST /upload */
-router.post('/upload', function(req, res, next) {
-  res.json([])
-});
+export default (database) => {
+  const router = express.Router() 
+  
+  const storage = multer.diskStorage({
+    destination: __dirname + '/../../schemata',
+    filename(req, file, cb) {
+      const unique = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, unique + '.schematic')
+    }
+  })
 
-export default router;
+  const upload = multer({ storage })
+
+  /**
+   * Uploads a valid NBT-formatted file to arkitektonika.
+   * The request must come via POST and as multipart/form-data.
+   * The field name must be "schematic". 
+   * Returns:
+   * - HTTP 500: the file could not be read or the accounting table could not be updated
+   * - HTTP 400: the file is not valid NBT
+   * - HTTP 200: the file was valid NBT and was accepted by arkitektonika; the response body contains a download_key and delete_key which are self-explanatory.
+   */
+  router.post('/upload', upload.single('schematic'), async (req, res, next) => {
+    const filename = req.file.filename
+    const file = await filesystem.openReadClose(filename)
+
+    const parsed = await nbt.read(file)
+    if (!parsed) {
+      await filesystem.deleteSchemata(filename)
+      next({
+        status: 400,
+        message: "File is not valid NBT, upload rejected"
+      })
+    }
+
+    const download_key = uuidv4().replace(/-/g, "")
+    const delete_key = uuidv4().replace(/-/g, "")
+    
+    const inserted = await database.insertRecord(filename, download_key, delete_key)
+    if (!inserted) {
+      await filesystem.deleteSchemata(filename)
+      next(new Error("Failed to update accounting table"))
+      return
+    }
+
+    res.json({ download_key, delete_key })
+  });
+
+  return router
+}

@@ -121,3 +121,7 @@ dist
 # Uncomment the following lines if you're not using Zero-Installs:
 # .yarn/cache
 # .pnp.*
+
+### project ###
+schemata/
+database.db
