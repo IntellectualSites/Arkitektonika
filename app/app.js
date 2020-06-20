@@ -53,6 +53,4 @@ app.use(function(err, req, res, next) {
   await database.init()
 })();
 
-
-
 export default app;

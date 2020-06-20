@@ -11,6 +11,7 @@ export default {
         return new Promise((resolve, reject) => {
             const stmt = database.prepare(raw, (err) => {
                 if (err) {
+                    console.error(err)
                     reject("Failed to prepare SQL statement")
                 } else {
                     resolve(stmt)
@@ -72,6 +73,23 @@ export default {
     },
 
     /**
+     * Wraps sqlite Statement#all in a promise
+     * @param {Statement} stmt the Statement to all with the given args
+     * @param {array} args the args that were baked into the Statement
+     */
+    allStmt(stmt, args) {
+        return new Promise((resolve, reject) => {
+            stmt.all(args, (err, row) => {
+                if (err) {
+                    reject("Failed to all prepared SQL statement")
+                } else {
+                    resolve(row)
+                }
+            }).finalize()
+        })
+    },
+
+    /**
      * Inserts a new schematic record into the accounting table
      * @param {string} filename the filename on disk
      * @param {string} download_key the key used to download the file
@@ -81,7 +99,8 @@ export default {
         try {
             const stmt = await this.prepare("insert into accounting (filename, download_key, delete_key, last_accessed, expired) values (?, ?, ?, ?, ?)")
             await this.runStmt(stmt, [ filename, download_key, delete_key, Date.now(), false ])
-          } catch {
+          } catch (err) {
+            console.error(err)
             return undefined
           }
           
@@ -138,23 +157,42 @@ export default {
     },
 
     /**
+     * Get records that haven't been accessed in at least the last olderThanMs
+     * @param {integer} olderThanMs
+     */
+   async getRecordsOlderThan(olderThanMs) {
+       let records
+    
+       const minimumAge = Date.now() - olderThanMs;
+       try {
+           const stmt = await this.prepare("select * from accounting where last_accessed <= ? and expired = 0")
+           records = await this.allStmt(stmt, [ minimumAge ])
+       } catch {
+           return undefined
+       }
+
+       return records
+   },
+
+    /**
      * Initializes the table and indices
      */
     async init() {
         await this.run(
             `create table if not exists accounting (
                 id integer not null,
-                filename char(33) not null,
                 download_key char(32) not null,
                 delete_key char(32) not null,
+                filename char(33) not null,
+                last_accessed integer not null,
                 expired integer not null,
                 constraint accounting_pk primary key (id autoincrement)
             );`
-          )
+        )
           
-          await this.run(`create unique index if not exists accounting_id_uindex on accounting (id);`)
-          await this.run(`create unique index if not exists accounting_filename_uindex on accounting (filename);`)
-          await this.run(`create unique index if not exists accounting_download_key_uindex on accounting (download_key);`)
-          await this.run(`create unique index if not exists accounting_delete_key_uindex on accounting (delete_key);`)
+        await this.run(`create unique index if not exists accounting_id_uindex on accounting (id);`)
+        await this.run(`create unique index if not exists accounting_filename_uindex on accounting (filename);`)
+        await this.run(`create unique index if not exists accounting_download_key_uindex on accounting (download_key);`)
+        await this.run(`create unique index if not exists accounting_delete_key_uindex on accounting (delete_key);`)
     }
 }
