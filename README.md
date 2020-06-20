@@ -1,6 +1,10 @@
 # arkitektonica
 Arkitektonica is a REST repository for NBT data. It accepts uploads of valid NBT data and stores them in a local folder while accounting for its metadata in a local sqlite database. Optionally, uploaded files can be expired based on the configurable age by running the prune script. Files can always be deleted via their deletion key.
 
+**exemplary instance only**: https://ark.jacobandersen.dev
+
+*This instance expires 30-minute old entries. It is not meant for production usage.*
+
 ## To Run
 1. `git clone https://github.com/IntellectualSites/Arkitektonika.git`
 2. `cd Arkitektonika`
