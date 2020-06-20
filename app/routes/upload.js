@@ -3,15 +3,16 @@ import multer from 'multer'
 import filesystem from '../util/filesystem'
 import nbt from '../util/nbt'
 import { v4 as uuidv4 } from 'uuid'
+import config from '../config'
 
 export default (database) => {
   const router = express.Router() 
   
   const storage = multer.diskStorage({
-    destination: __dirname + '/../../schemata',
+    destination: __dirname + `/../../${config.storage_folder}`,
     filename(req, file, cb) {
       const unique = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, unique + '.schematic')
+      cb(null, unique + config.file_extension)
     }
   })
 
@@ -26,9 +27,13 @@ export default (database) => {
    * - HTTP 400: the file is not valid NBT
    * - HTTP 200: the file was valid NBT and was accepted by arkitektonika; the response body contains a download_key and delete_key which are self-explanatory.
    */
-  router.post('/upload', upload.single('schematic'), async (req, res, next) => {
+  router.post('/upload', upload.single(config.multipart_param), async (req, res, next) => {
     const filename = req.file.filename
     const file = await filesystem.openReadClose(filename)
+    if (!file) {
+      next(new Error("File could not be read"))
+      return
+    }
 
     const parsed = await nbt.read(file)
     if (!parsed) {
@@ -37,6 +42,7 @@ export default (database) => {
         status: 400,
         message: "File is not valid NBT, upload rejected"
       })
+      return
     }
 
     const download_key = uuidv4().replace(/-/g, "")
