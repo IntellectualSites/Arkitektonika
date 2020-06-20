@@ -21,7 +21,6 @@ export default (database) => {
   /**
    * Uploads a valid NBT-formatted file to arkitektonika.
    * The request must come via POST and as multipart/form-data.
-   * The field name must be "schematic". 
    * Returns:
    * - HTTP 500: the file could not be read or the accounting table could not be updated
    * - HTTP 400: the file is not valid NBT
