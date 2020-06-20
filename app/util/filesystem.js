@@ -41,7 +41,8 @@ export default {
      */
     readSchemata(descriptor) {
         return new Promise((resolve, reject) => {
-            fs.read(descriptor, (err, bytesRead, buffer) => {
+            const buffer = Buffer.alloc(16384)
+            fs.read(descriptor, buffer, 0, buffer.length, null, (err, bytesRead, buffer) => {
                 if (err) {
                     reject(err)
                 } else {
