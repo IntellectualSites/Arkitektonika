@@ -12,7 +12,8 @@
     "dev": "NODE_ENV=development yarn run build && DEBUG=* NODE_ENV=development yarn run server",
     "watch:dev": "nodemon",
     "prod": "NODE_ENV=production yarn run build && NODE_ENV=production yarn run server",
-    "app:prune": "node ./dist/bin/prune"
+    "app:prune": "NODE_ENV=production yarn run build && NODE_ENV=production node ./dist/bin/prune",
+    "app:dev:prune": "NODE_ENV=development yarn run build && NODE_ENV=development node ./dist/bin/prune"
   },
   "repository": {
     "type": "git",

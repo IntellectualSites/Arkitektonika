@@ -29,7 +29,7 @@ WantedBy=multi-user.target
 ## Set up Expiration
 Create a cron job that runs at whatever frequency you desire. As an example, this will run the pruning script every 12 hours:
 ```
-0 */12 * * * cd /srv/arkitektonika && /usr/bin/yarn run prune
+0 */12 * * * cd /srv/arkitektonika && /usr/bin/yarn run app:prune
 ```
 
 ## Configuration
