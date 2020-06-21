@@ -3,6 +3,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import createError from 'http-errors'
 import logger from 'morgan'
+import cors from 'cors'
 import database from './util/database'
 
 // import routes
@@ -19,6 +20,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors())
 
 // routes
 app.use(indexRouter());
