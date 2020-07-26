@@ -1,6 +1,7 @@
 import fs from 'fs'
+import config from '../config.js'
 
-const schemataPath = __dirname + '/../../schemata/'
+const schemataPath = __dirname + `/../../${config.storage_folder}/`
 
 export default {
     /**
