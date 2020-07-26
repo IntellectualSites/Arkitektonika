@@ -6,30 +6,15 @@ import debugLib from 'debug'
 import http from 'http'
 import config from '../config'
 
+const port = config.port;
+app.set('port', port);
+
+const debug = debugLib('arkitektonika:server')
+
 /**
- * Normalize port into number, string, or false
- * @param {*} val 
+ * Event listener for HTTP server "error" event
+ * @param {Error} error 
  */
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
- /**
-  * Event listener for HTTP server "error" event
-  * @param {Error} error 
-  */
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -61,12 +46,8 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-const debug = debugLib('arkitektonika:server')
-
-const port = normalizePort(config.port || '3000');
-app.set('port', port);
-
 const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
