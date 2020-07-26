@@ -4,6 +4,7 @@
 import app from '../app'
 import debugLib from 'debug'
 import http from 'http'
+import config from '../config'
 
 /**
  * Normalize port into number, string, or false
@@ -62,7 +63,7 @@ function onListening() {
 
 const debug = debugLib('arkitektonika:server')
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.port || '3000');
 app.set('port', port);
 
 const server = http.createServer(app);
