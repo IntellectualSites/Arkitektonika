@@ -11,6 +11,19 @@ Arkitektonika is a REST repository for NBT data. It accepts uploads of valid NBT
 3. `yarn install`
 4. `yarn start`
 
+## With Docker
+Clone the entire repository or just grab the Dockerfile and put it in its own folder, then:
+```
+docker build -t intellectualsites/arkitektonika:custom .
+docker run --name arkitektonika -p 3000:3000 \
+	-v ./arkitektonika/schemata/:/app/schemata/ \
+	-v ./arkitektonika/config.js:/app/app/config.js \
+	-d intellectualsites/arkitektonika:custom
+```
+
+- If you use a different port in config.js (why?), the `-p` argument should be as so `-p [YOUR DESIRED EXT PORT]:[PORT IN CONFIG]`.
+- If you use a different storage directory name (why?) (i.e., not `schemata`), then update the first `-v` argument to point to the correct folder name.
+
 ## As a Service
 ### SystemD
 * Update the User, Group, and Working Directory for your scenario
