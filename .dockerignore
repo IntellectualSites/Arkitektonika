@@ -1,0 +1,8 @@
+data/
+node_modules/
+tmp/
+.gitignore
+nodemon.json
+renovate.json
+LICENSE.md
+README.md

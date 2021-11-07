@@ -123,5 +123,4 @@ dist
 # .pnp.*
 
 ### project ###
-schemata/
-database.db
+data/

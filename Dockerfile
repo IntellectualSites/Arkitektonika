@@ -1,11 +1,26 @@
+# Build the application
+# -> transpile typescript to javascript
+FROM node:lts AS builder
+
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY tsconfig.json ./
+COPY yarn.lock ./
+COPY ./app ./app
+RUN yarn install ; yarn build
+
+# Application runner
+# -> runs the transpiled code itself
+# seperated from builder context to keep image as slim as possible
 FROM node:lts
 
-# Clone and move into directory
-RUN git clone https://github.com/IntellectualSites/Arkitektonika.git /app
 WORKDIR /app
+ENV NODE_ENV=production
 
-# Install dependencies
-RUN yarn install
-
-# Start the app
-CMD ["yarn", "start"]
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install --only=production
+COPY --from=builder /usr/src/app/dist/app ./app
+EXPOSE 3000
+CMD [ "node", "app/launch.js" ]
