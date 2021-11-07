@@ -9,6 +9,7 @@ Example Instances:
 | Address                           | Expiry     |
 |-----------------------------------|------------|
 | https://ark.jacobandersen.dev     | 30 minutes |
+| https://api.schematic.cloud/      | 30 minutes |
 | https://arkitektonika.pschwang.eu | 4 hours    |
 
 ## To Run
@@ -17,11 +18,11 @@ Example Instances:
 2. `cd Arkitektonika`
 3. `yarn install`
 
-#### without Typescript transpiling
+#### Without Typescript transpiling
 
 4. `yarn start`
 
-#### with Typescript transpiling (recommended)
+#### With Typescript transpiling (recommended)
 
 4. `yarn start:prod`
 
@@ -29,11 +30,11 @@ Example Instances:
 
 ---
 
-### prebuilt images
+### Prebuilt images
 
 Prebuilt image available at https://hub.docker.com/r/pierreschwang/arkitektonika
 
-### built image locally
+### Build image locally
 
 Clone the entire repository and run the following commands:
 
@@ -102,14 +103,27 @@ Or with a docker-compose configuration:
 
 ````json
 {
-  // on which port should the application bind
   "port": 3000,
-  // defines how old records must be to be deleted by the prune script (in ms)
   "prune": 1800000,
-  // maximum amount of iterations to obtain a unique download and deletion token
-  "maxIterations": 20
+  "maxIterations": 20,
+  "limiter": {
+    "windowMs": 60000,
+    "delayAfter": 30,
+    "delayMs": 500
+  }
 }
 ````
+
+| Config Key         | Description                                                                                                                |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------|
+| port               | on which port should the application bind                                                                                  |
+| prune              | defines how old records must be to be deleted by the prune script (in ms)                                                  |
+| maxIterations      | maximum amount of iterations to obtain a unique download and deletion token                                                |
+| limiter.windowMs   | the frame of the limiter (after what duration should the limit gets reset)                                                 |
+| limiter.delayAfter | After how many requests during windowMs should delayMs be applied                                                          |
+| limiter.delayMs    | How many ms should the request take longer. Formula: `currentRequestDelay = (currentRequestAmount - delayAfter) * delayMs` |
+
+
 
 ## File structure:
 

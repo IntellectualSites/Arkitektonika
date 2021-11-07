@@ -30,7 +30,7 @@ export default class ArkitektonikaServer {
 
     public start(port: number = 3000): void {
         this.app.listen(port, () => {
-            this.logger.info(`HTTP server up and running @ 0.0.0.0:${port}`)
+            this.logger.info(`Arkitektonika server up and running @ 0.0.0.0:${port}`)
         });
     }
 

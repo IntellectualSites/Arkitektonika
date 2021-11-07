@@ -4,17 +4,32 @@ import {PathLike} from "fs";
 export declare type Config = {
     port: number,
     prune: number,
-    maxIterations: number
+    maxIterations: number,
+    limiter: {
+        windowMs: number,
+        delayAfter: number,
+        delayMs: number,
+    }
 };
 
 const DEFAULT_CONFIG: Config = {
     port: 3000,
     prune: 1000 * 60 * 30,
-    maxIterations: 20
+    maxIterations: 20,
+    limiter: {
+        windowMs: 1000 * 60,
+        delayAfter: 30,
+        delayMs: 500
+    }
 };
 
 const parseConfigContent = (content: string): Config => {
-    return JSON.parse(content) as Config;
+    const json = JSON.parse(content);
+    try {
+        return json as Config;
+    } catch (error) {
+        return Object.assign(DEFAULT_CONFIG, json);
+    }
 }
 
 export const loadConfig = (file: PathLike): Config => {

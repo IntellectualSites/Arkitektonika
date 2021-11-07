@@ -4,19 +4,22 @@ import Arkitektonika, {SCHEMATIC_DIR} from "../../Arkitektonika";
 import path from "path";
 import * as fs from "fs";
 
-/**
- * Configures the rate limiter for the delete-route because brute force is kind of not cool
- * Allows 30 requests per minute = 1 request every 2 seconds.
- * Each request above that limit will load for 500ms extra.
- * The 31st request will take additional 500ms to fulfill, 32nd additional 1000ms, ...
- */
-const LIMITER = slowDown({
-    windowMs: 1000 * 60,
-    delayAfter: 30,
-    delayMs: 500
-});
-
 export const DELETE_ROUTER = (app: Arkitektonika, router: express.Application) => {
+
+    /**
+     * Configures the rate limiter for the delete-route because brute force is kind of not cool
+     *
+     * Default:
+     * Allows 30 requests per minute = 1 request every 2 seconds.
+     * Each request above that limit will load for 500ms extra.
+     * The 31st request will take additional 500ms to fulfill, 32nd additional 1000ms, ...
+     */
+
+    const LIMITER = slowDown({
+        windowMs: app.config.limiter.windowMs || 1000 * 60,
+        delayAfter: app.config.limiter.delayAfter || 30,
+        delayMs: app.config.limiter.delayMs || 500
+    });
 
     router.delete('/delete/:key', LIMITER, (async (req, res) => {
         let record;

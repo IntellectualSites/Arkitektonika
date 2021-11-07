@@ -10,7 +10,7 @@ export default class Logger {
     private readonly transport: Transport = new winston.transports.Console();
     private readonly format = winston.format.combine(
         winston.format.timestamp({
-            format: 'DD.MM.YYYY - HH:mm:ss'
+            format: 'YYYY-MM-DD HH:mm:ss'
         }),
         winston.format((info) => {
             info.level = info.level.toUpperCase();
