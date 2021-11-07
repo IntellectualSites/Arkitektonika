@@ -18,7 +18,7 @@ const LIMITER = slowDown({
 
 export const DELETE_ROUTER = (app: Arkitektonika, router: express.Application) => {
 
-    router.get('/delete/:key', LIMITER, (async (req, res) => {
+    router.delete('/delete/:key', LIMITER, (async (req, res) => {
         let record;
         // search for record by download key
         try {
