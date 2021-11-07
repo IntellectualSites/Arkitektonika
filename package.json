@@ -5,10 +5,8 @@
   "private": true,
   "scripts": {
     "start": "ts-node ./app/launch.ts",
-    "start:prod": "npm run build && node ./dist/launch.js",
+    "start:prod": "npm run build && node ./dist/app/launch.js",
     "build": "npx tsc",
-    "app:prune": "NODE_ENV=production yarn run build && NODE_ENV=production node ./dist/bin/prune",
-    "app:dev:prune": "NODE_ENV=development yarn run build && NODE_ENV=development node ./dist/bin/prune",
     "start:nodemon": "node ./node_modules/nodemon/bin/nodemon.js"
   },
   "repository": {
