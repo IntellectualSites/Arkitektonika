@@ -6,7 +6,6 @@ import path from "path";
 import * as fs from "fs";
 import {Config, loadConfig} from "./config/Config";
 
-export const FILE_EXTENSION = '.schematic';
 export const DATA_DIR: string = path.join(__filename, '..', '..', 'data');
 export const SCHEMATIC_DIR: string = path.join(DATA_DIR, 'schemata');
 
@@ -50,9 +49,9 @@ export default class Arkitektonika {
         const deleted = await this._dataStorage.deleteExpiredSchematicRecords(this._config.prune);
         this.logger.info(`Deleted ${deleted.length} expired schematic records from the database`)
         let deletionCounter = 0;
-        for (let file of fs.readdirSync(SCHEMATIC_DIR).filter(value => path.extname(value) === FILE_EXTENSION)) {
+        for (let file of fs.readdirSync(SCHEMATIC_DIR)) {
             try {
-                await this._dataStorage.getSchematicRecordByDownloadKey(path.basename(file, FILE_EXTENSION))
+                await this._dataStorage.getSchematicRecordByDownloadKey(path.basename(file))
             } catch (error) {
                 // file has no matching database entry -> delete the dangling file
                 this.logger.debug(`Deleting dangling file ${file}`)
