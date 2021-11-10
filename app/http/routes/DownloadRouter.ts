@@ -5,6 +5,16 @@ import * as fs from "fs";
 
 export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application) => {
 
+    router.head('/download/:key', (async (req, res) => {
+        try {
+            const record = await app.dataStorage.getSchematicRecordByDownloadKey(req.params.key);
+            fs.readFileSync(path.join(SCHEMATIC_DIR, record.downloadKey));
+            return res.status(200).send();
+        } catch (error) {
+            return res.status(404).send();
+        }
+    }));
+
     router.get('/download/:key', (async (req, res) => {
         let record;
         // search for record by download key
@@ -21,7 +31,7 @@ export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application)
             // try to read binary data and send to client with initial file name
             const data = fs.readFileSync(filePath);
             res.setHeader('Content-Disposition', `attachment; filename="${record.fileName}"`)
-            res.send(data);
+            res.status(200).send(data);
         } catch (error) {
             // file not found or corrupt - delete eventually present file and remove entry from accounting table
             if (fs.existsSync(filePath)) {
