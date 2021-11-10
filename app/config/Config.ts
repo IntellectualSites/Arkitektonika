@@ -34,7 +34,7 @@ const parseConfigContent = (content: string): Config => {
 
 export const loadConfig = (file: PathLike): Config => {
     if (!fs.existsSync(file)) {
-        fs.writeFileSync(file, JSON.stringify(DEFAULT_CONFIG));
+        fs.writeFileSync(file, JSON.stringify(DEFAULT_CONFIG, null, 2));
         return DEFAULT_CONFIG;
     }
     try {
