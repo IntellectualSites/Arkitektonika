@@ -9,8 +9,8 @@ Example Instances:
 | Address                           | Expiry     |
 |-----------------------------------|------------|
 | https://ark.jacobandersen.dev     | 30 minutes |
-| https://api.schematic.cloud/      | 30 minutes |
 | https://arkitektonika.pschwang.eu | 4 hours    |
+| https://api.schematic.cloud/      | 30 days    |
 
 ## To Run
 
