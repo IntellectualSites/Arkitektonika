@@ -38,10 +38,10 @@ export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) =
         }
 
         // Generate keys
-        let downloadKey, deletionKey;
+        let downloadKey, deleteKey;
         try {
             downloadKey = await app.dataStorage.generateDownloadKey(app.config.maxIterations);
-            deletionKey = await app.dataStorage.generateDeletionKey(app.config.maxIterations);
+            deleteKey = await app.dataStorage.generateDeletionKey(app.config.maxIterations);
         } catch (error) {
             fs.unlinkSync(file.tempFilePath);
             return res.status(500).send({
@@ -52,8 +52,7 @@ export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) =
         // Insert record into accounting table
         try {
             const record = await app.dataStorage.storeSchematicRecord({
-                expired: false,
-                downloadKey, deleteKey: deletionKey,
+                downloadKey, deleteKey,
                 fileName: file.name
             });
             await file.mv(path.join(SCHEMATIC_DIR, downloadKey))

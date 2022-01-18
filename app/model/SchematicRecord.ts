@@ -4,5 +4,5 @@ export declare type SchematicRecord = {
     deleteKey: string,
     fileName: string,
     last_accessed?: Date | undefined,
-    expired: boolean
+    expired?: Date
 }

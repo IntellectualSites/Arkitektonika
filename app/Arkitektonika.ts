@@ -46,8 +46,8 @@ export default class Arkitektonika {
      */
     public async prune() {
         this.logger.info("Starting prune of old or expired schematics... ")
-        const deleted = await this._dataStorage.deleteExpiredSchematicRecords(this._config.prune);
-        this.logger.info(`Deleted ${deleted.length} expired schematic records from the database`)
+        const deleted = await this._dataStorage.expireSchematicRecords(this._config.prune);
+        this.logger.info(`Expired ${deleted.length} schematic records from the database`)
         let deletionCounter = 0;
         for (let file of fs.readdirSync(SCHEMATIC_DIR)) {
             try {

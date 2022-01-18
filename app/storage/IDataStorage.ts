@@ -29,18 +29,24 @@ export default interface IDataStorage {
     deleteSchematicRecord(recordId: number): Promise<any>;
 
     /**
+     * Let a schematic record expire
+     * @param recordId
+     */
+    expireSchematicRecord(recordId: number): Promise<any>;
+
+    /**
      *
      * @param record
      */
     storeSchematicRecord(record: SchematicRecord): Promise<SchematicRecord>;
 
     /**
-     * Deletes expired schematics based on {@link SchematicRecord#last_accessed} is further than x milliseconds ago.
+     * Let schematics expired if {@link SchematicRecord#last_accessed} is further than x milliseconds ago.
      * @param milliseconds  The amount of milliseconds to check last_accessed against.
-     * @return              Promise either containing the deleted rows or
+     * @return              Promise either containing the expired rows or
      *                      a failed promise if something went wrong.
      */
-    deleteExpiredSchematicRecords(milliseconds: number): Promise<SchematicRecord[]>;
+    expireSchematicRecords(milliseconds: number): Promise<SchematicRecord[]>;
 
     generateDownloadKey(maxIterations: number): Promise<string>;
 

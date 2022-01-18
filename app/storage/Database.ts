@@ -73,6 +73,24 @@ export default class Database implements IDataStorage {
     /**
      * @inheritDoc
      */
+    expireSchematicRecord(recordId: number): Promise<any> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const changes = this.database.prepare('UPDATE accounting SET expired = ? WHERE id = ?')
+                    .run(Date.now(), recordId).changes;
+                if (changes < 1) {
+                    return reject(new Error("Failed to expire schematic - No schematic exists with passed id"));
+                }
+                resolve(null);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+
+    /**
+     * @inheritDoc
+     */
     storeSchematicRecord(record: SchematicRecord): Promise<SchematicRecord> {
         return new Promise(async (resolve, reject) => {
             try {
@@ -88,7 +106,7 @@ export default class Database implements IDataStorage {
     /**
      * @inheritDoc
      */
-    deleteExpiredSchematicRecords(milliseconds: number): Promise<SchematicRecord[]> {
+    expireSchematicRecords(milliseconds: number): Promise<SchematicRecord[]> {
         return new Promise(async (resolve, reject) => {
             try {
                 // retrieve rows to delete
@@ -99,10 +117,10 @@ export default class Database implements IDataStorage {
                 }
                 const records: SchematicRecord[] = rows.map(entry => Database.transformRowToRecord(entry));
 
-                const stmt = this.database.prepare('DELETE FROM accounting WHERE id = ?');
+                const stmt = this.database.prepare('UPDATE accounting SET expired = ? WHERE id = ?');
 
                 for (let record of records) {
-                    stmt.run(record.id);
+                    stmt.run(Date.now(), record.id);
                 }
 
                 resolve(records);
@@ -160,6 +178,7 @@ export default class Database implements IDataStorage {
                 delete_key char(32) not null,
                 filename char(33) not null,
                 last_accessed integer not null,
+                expired date,
                 constraint accounting_pk primary key (id autoincrement))`).run();
         [
             'create unique index if not exists accounting_id_uindex on accounting (id);',

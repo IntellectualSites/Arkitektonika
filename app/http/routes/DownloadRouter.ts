@@ -8,7 +8,9 @@ export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application)
     router.head('/download/:key', (async (req, res) => {
         try {
             const record = await app.dataStorage.getSchematicRecordByDownloadKey(req.params.key);
-            fs.readFileSync(path.join(SCHEMATIC_DIR, record.downloadKey));
+            if (!fs.existsSync(path.join(SCHEMATIC_DIR, record.downloadKey)) || record.expired) {
+                return res.status(410).send();
+            }
             return res.status(200).send();
         } catch (error) {
             return res.status(404).send();
@@ -23,6 +25,11 @@ export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application)
         } catch (error) {
             return res.status(404).send({
                 error: 'No record found for download key'
+            });
+        }
+        if (record.expired) {
+            return res.status(410).send({
+                error: 'Schematic expired'
             });
         }
         // construct the total path to the stored file internally
