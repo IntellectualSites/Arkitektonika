@@ -6,6 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: borales/actions-yarn@v2.3.0
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build
+        uses: docker/build-push-action@v2
         with:
-          cmd: install
+          context: .
+          file: ./Dockerfile
+          push: false
