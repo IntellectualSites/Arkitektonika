@@ -1,11 +1,11 @@
 import express from 'express';
 import {Express} from 'express';
-import Logger from "../Logger";
-import Arkitektonika from "../Arkitektonika";
-import {DOWNLOAD_ROUTER} from "./routes/DownloadRouter";
-import {UPLOAD_ROUTER} from "./routes/UploadRouter";
-import {INDEX_ROUTER} from "./routes/IndexRouter";
-import {DELETE_ROUTER} from "./routes/DeleteRouter";
+import Logger from "../Logger.js";
+import Arkitektonika from "../Arkitektonika.js";
+import {DOWNLOAD_ROUTER} from "./routes/DownloadRouter.js";
+import {UPLOAD_ROUTER} from "./routes/UploadRouter.js";
+import {INDEX_ROUTER} from "./routes/IndexRouter.js";
+import {DELETE_ROUTER} from "./routes/DeleteRouter.js";
 
 export default class ArkitektonikaServer {
 

@@ -1,10 +1,12 @@
 import sqlite from 'better-sqlite3';
-import Logger from "../Logger";
-import IDataStorage from "./IDataStorage";
-import {SchematicRecord} from "../model/SchematicRecord";
+import Logger from "../Logger.js";
+import IDataStorage from "./IDataStorage.js";
+import {SchematicRecord} from "../model/SchematicRecord.js";
 import path from "path";
-import {DATA_DIR} from "../Arkitektonika";
-import {nanoid} from "nanoid";
+import {DATA_DIR} from "../Arkitektonika.js";
+import {customAlphabet} from "nanoid";
+
+const ID_GENERATOR = customAlphabet("0123456789abcdef", 32);
 
 export default class Database implements IDataStorage {
 
@@ -49,24 +51,6 @@ export default class Database implements IDataStorage {
                 return reject("No data found for passed download key");
             }
             resolve(Database.transformRowToRecord(result));
-        });
-    }
-
-    /**
-     * @inheritDoc
-     */
-    deleteSchematicRecord(recordId: number): Promise<any> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const changes = this.database.prepare('DELETE FROM accounting WHERE id = ?')
-                    .run(recordId).changes;
-                if (changes < 1) {
-                    return reject(new Error("Failed to delete schematic - No schematic exists with passed id"));
-                }
-                resolve(null);
-            } catch (error) {
-                reject(error);
-            }
         });
     }
 
@@ -135,14 +119,15 @@ export default class Database implements IDataStorage {
             let iterations = 0;
             let key: string | null;
             do {
-                key = nanoid(32);
+                key = ID_GENERATOR();
                 const dbResult = this.database.prepare('SELECT id FROM accounting where delete_key = ? LIMIT 1')
                     .get(key)
                 if (dbResult) {
                     key = null;
                     continue
                 }
-                resolve(key);
+                if (key)
+                    resolve(key);
             } while (key == null && (iterations++ < maxIterations))
             reject();
         });
@@ -153,14 +138,15 @@ export default class Database implements IDataStorage {
             let iterations = 0;
             let key: string | null;
             do {
-                key = nanoid(32);
+                key = ID_GENERATOR();
                 const dbResult = this.database.prepare('SELECT id FROM accounting where download_key = ? LIMIT 1')
                     .get(key)
                 if (dbResult) {
                     key = null;
                     continue
                 }
-                resolve(key);
+                if (key)
+                    resolve(key);
             } while (key == null && (iterations++ < maxIterations))
             reject();
         });

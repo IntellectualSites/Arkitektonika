@@ -3,7 +3,7 @@
  */
 
 import minimist from 'minimist';
-import Arkitektonika from "./Arkitektonika";
+import Arkitektonika from "./Arkitektonika.js";
 
 const app = new Arkitektonika();
 const params = minimist(process.argv.slice(2));

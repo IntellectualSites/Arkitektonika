@@ -1,7 +1,7 @@
 import winston from 'winston';
 import * as Transport from 'winston-transport';
 import expressWinston from 'express-winston';
-import {Handler} from "express";
+import {Handler, Request, Response} from "express";
 import chalk from 'chalk';
 
 export default class Logger {
@@ -48,7 +48,7 @@ export default class Logger {
             colorize: true,
             format: this.format,
             level: Logger.getLogLevel(),
-            msg: (req, res) => {
+            msg: (req: Request, res: Response) => {
                 const substrTo = Math.min(req.url.length, 50);
                 const shortened = req.url.length > 50;
                 const url = req.url.substr(0, substrTo) + (shortened ? '...' : '');

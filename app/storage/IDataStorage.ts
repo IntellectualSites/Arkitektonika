@@ -1,4 +1,4 @@
-import {SchematicRecord} from "../model/SchematicRecord";
+import {SchematicRecord} from "../model/SchematicRecord.js";
 
 export default interface IDataStorage {
 
@@ -21,12 +21,6 @@ export default interface IDataStorage {
      *          a failed promise of none found matching the delete key.
      */
     getSchematicRecordByDeleteKey(deleteKey: string): Promise<SchematicRecord>;
-
-    /**
-     * Delete a schematic from the database
-     * @param recordId
-     */
-    deleteSchematicRecord(recordId: number): Promise<any>;
 
     /**
      * Let a schematic record expire

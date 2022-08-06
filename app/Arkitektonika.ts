@@ -1,12 +1,13 @@
-import ArkitektonikaServer from "./http/ArkitektonikaServer";
-import Logger from "./Logger";
-import IDataStorage from "./storage/IDataStorage";
-import Database from "./storage/Database";
+import ArkitektonikaServer from "./http/ArkitektonikaServer.js";
+import Logger from "./Logger.js";
+import IDataStorage from "./storage/IDataStorage.js";
+import Database from "./storage/Database.js";
 import path from "path";
 import * as fs from "fs";
-import {Config, loadConfig} from "./config/Config";
+import {Config, loadConfig} from "./config/Config.js";
+import {fileURLToPath} from "url";
 
-export const DATA_DIR: string = path.join(__filename, '..', '..', 'data');
+export const DATA_DIR: string = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'data');
 export const SCHEMATIC_DIR: string = path.join(DATA_DIR, 'schemata');
 
 export default class Arkitektonika {
@@ -47,7 +48,10 @@ export default class Arkitektonika {
     public async prune() {
         this.logger.info("Starting prune of old or expired schematics... ")
         const deleted = await this._dataStorage.expireSchematicRecords(this._config.prune);
-        this.logger.info(`Expired ${deleted.length} schematic records from the database`)
+        for (let record of deleted) {
+            fs.rmSync(path.join(SCHEMATIC_DIR, record.downloadKey))
+        }
+        this.logger.info(`Expired ${deleted.length} schematic records from the database and deleted file system entries`)
         let deletionCounter = 0;
         for (let file of fs.readdirSync(SCHEMATIC_DIR)) {
             try {
@@ -68,10 +72,11 @@ export default class Arkitektonika {
             if (!record.id) {
                 continue;
             }
-            await this._dataStorage.deleteSchematicRecord(record.id);
+            await this._dataStorage.expireSchematicRecord(record.id);
+            this.logger.debug(`Expired schematic with id ${record.id} because no file system entry was present`)
             deletionCounter++;
         }
-        this.logger.info(`Deleted ${deletionCounter} database entries without a filesystem entry`);
+        this.logger.info(`Pruned ${deletionCounter} schematic records`);
     }
 
     get logger(): Logger {

@@ -1,6 +1,6 @@
 import express from "express";
 import fileUpload, {UploadedFile} from 'express-fileupload';
-import Arkitektonika, {SCHEMATIC_DIR} from "../../Arkitektonika";
+import Arkitektonika, {SCHEMATIC_DIR} from "../../Arkitektonika.js";
 import nbt from "prismarine-nbt";
 import * as fs from "fs";
 import path from "path";
