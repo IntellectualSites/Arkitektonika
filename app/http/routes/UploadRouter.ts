@@ -47,7 +47,7 @@ export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) =
             app.logger.debug('Invalid request due to invalid nbt content: ' + error);
             fs.unlinkSync(file.tempFilePath);
             return res.status(400).send({
-                error: 'File is not valid NBT: ' + error
+                error: 'File is not valid NBT'
             });
         }
 

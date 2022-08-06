@@ -136,11 +136,13 @@ curl --location --request POST 'http://localhost:3000/upload' \
 ```
 
 response:
-| code | meaning |
+
+| code | meaning                                                              |
 |------|----------------------------------------------------------------------|
-| 500 | file could not be found on disk after being uploaded (upload failed) |
-| 400 | file was not of valid NBT format |
-| 200 | file was of valid NBT format and was accepted |
+| 200  | file was of valid NBT format and was accepted                        |
+| 400  | file was not of valid NBT format                                     |
+| 413  | file payload was too large and rejected                              |
+| 500  | file could not be found on disk after being uploaded (upload failed) |
 
 success body:
 
@@ -153,6 +155,7 @@ success body:
 
 The download key allows you to download the file, and the delete key lets you delete it. Share the `download_key`, but
 not the `delete_key`.
+
 ### Check download headers
 
 **HEAD `INSTANCE_URL/download/:download_key`**: check what headers you'd get if you sent a POST request for a file with
