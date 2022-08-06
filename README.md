@@ -9,7 +9,6 @@ Example Instances:
 | Address                           | Expiry     |
 |-----------------------------------|------------|
 | https://ark.jacobandersen.dev     | 30 minutes |
-| https://arkitektonika.pschwang.eu | 4 hours    |
 | https://api.schematic.cloud/      | 30 days    |
 
 ## To Run
@@ -52,36 +51,18 @@ version: '3.8'
 services:
   arkitektonika:
     container_name: Arkitektonika
-    image: pierreschwang/arkitektonika:dev
+    image: intellectualsites/arkitektonika:dev
     restart: unless-stopped
     volumes:
-      - ./data:/app/data
+      - ./data:/app/data # Mount the data folder (containing config file, database and schematic storage)
     environment:
-      - LOG_LEVEL=DEBUG   # if debug logs should be printed to the console 
-    networks:
-      web:
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.arkitektonika.entrypoints=web"
-      - "traefik.http.routers.arkitektonika.rule=Host(`arkitektonika.pschwang.eu`)"
-      - "traefik.http.middlewares.arkitektonika-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.arkitektonika.middlewares=arkitektonika-https-redirect"
-      - "traefik.http.routers.arkitektonika-secure.entrypoints=websecure"
-      - "traefik.http.routers.arkitektonika-secure.rule=Host(`arkitektonika.pschwang.eu`)"
-      - "traefik.http.routers.arkitektonika-secure.tls=true"
-      - "traefik.http.routers.arkitektonika-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.arkitektonika-secure.service=arkitektonika"
-      - "traefik.http.services.arkitektonika.loadbalancer.server.port=3000"
-      - "traefik.docker.network=web"
-
-networks:
-  web:
-    external: true
+      - LOG_LEVEL=DEBUG   # if debug logs should be printed to the console
 ````
 
 `/app/data` is mounted to the host at `/data` as that folder contains persistent data.
 
 ## Prune data
+
 Execute the start command with the prune flag to execute the prune routine:
 ``yarn start:prod --prune``
 
@@ -95,8 +76,9 @@ hours:
 ```
 
 Or with a docker-compose configuration:
+
 ````
-0 */12 * * * cd /srv/arkitektonika && docker-compose run arkitektonika node app/launch.js --prune
+0 */12 * * * cd /srv/arkitektonika && docker-compose run --rm arkitektonika node app/launch.js --prune
 ````
 
 ## Configuration
@@ -123,8 +105,6 @@ Or with a docker-compose configuration:
 | limiter.delayAfter | After how many requests during windowMs should delayMs be applied                                                          |
 | limiter.delayMs    | How many ms should the request take longer. Formula: `currentRequestDelay = (currentRequestAmount - delayAfter) * delayMs` |
 
-
-
 ## File structure:
 
 ````
@@ -132,21 +112,21 @@ data
 ├── config.json
 ├── database.db
 └── schemata
-    ├── 3319b_VhnQPbcFYx4WSAjakburVh19Dy
-    └── YzXYIQCH63AUSWQOxF0MJoPhg0NXGpO6
+    ├── fe65d7edc37149c47171962dc26a039b
+    └── a98f299c5cf294e6555617e83226bcdd
 ````
 
 `config.json` holds the user configuration data <br>
 `database.db` holds the required data for each schematic <br>
 `schemata`    holds all schematic file data
 
-## Routes
+### Routes
 
-`PUBLIC_URL` will stand for the configured public url in the config file.
+All routes will be available at the exposed port (e.g. `localhost:3000`).
 
 ### Upload a file
 
-**POST `PUBLIC_URL/upload`**: send your file as multipart/form-data; example:
+**POST `INSTANCE_URL/upload`**: send your file as multipart/form-data; example:
 
 ```bash
 curl --location --request POST 'http://localhost:3000/upload' \
@@ -154,27 +134,44 @@ curl --location --request POST 'http://localhost:3000/upload' \
 ```
 
 response:
-| code | meaning                                                              |
+| code | meaning |
 |------|----------------------------------------------------------------------|
-| 500  | file could not be found on disk after being uploaded (upload failed) |
-| 400  | file was not of valid NBT format                                     |
-| 200  | file was of valid NBT format and was accepted                        |
+| 500 | file could not be found on disk after being uploaded (upload failed) |
+| 400 | file was not of valid NBT format |
+| 200 | file was of valid NBT format and was accepted |
 
 success body:
 
 ```json
 {
-  "download_key": "3319b_VhnQPbcFYx4WSAjakburVh19Dy",
-  "delete_key": "YzXYIQCH63AUSWQOxF0MJoPhg0NXGpO6"
+  "download_key": "db6186c8795740379d26fc61ecba1a24",
+  "delete_key": "11561161dffe4a1298992ce063be5ff9"
 }
 ```
 
 The download key allows you to download the file, and the delete key lets you delete it. Share the `download_key`, but
 not the `delete_key`.
+### Check download headers
+
+**HEAD `INSTANCE_URL/download/:download_key`**: check what headers you'd get if you sent a POST request for a file with
+the given download_key; example:
+
+```bash
+curl --location --head 'http://localhost:3000/download/db6186c8795740379d26fc61ecba1a24'
+```
+
+The response for this is in the form of status codes only.
+
+| Status-Code | Meaning                                                                                |
+|-------------|----------------------------------------------------------------------------------------|
+| 200         | File was found, prospective download would succeed                                     |
+| 404         | File was not found in the database                                                     |
+| 410         | File metadata is in accounting table, but file is not on disk or already expired       |
+| 500         | An internal server error occurred due to corrupted metadata (missing data in database) |
 
 ### Download a file
 
-**GET `PUBLIC_URL/download/:download_key`**: download a file with the given `download_key`; example:
+**GET `INSTANCE_URL/download/:download_key`**: download a file with the given `download_key`; example:
 
 ```bash
 curl --location --request GET 'http://localhost:3000/download/db6186c8795740379d26fc61ecba1a24'
@@ -184,6 +181,24 @@ response:
 see **Check download headers** above.
 
 On success, the file is sent as an attachment for download to the browser / requestor.
+
+### Check deletion headers
+
+**HEAD `INSTANCE_URL/delete/:delete_key`**: check what headers you'd get if you sent a DELETE request for a file with
+the given delete_key; example:
+
+```bash
+curl --location --head 'http://localhost:3000/delete/11561161dffe4a1298992ce063be5ff9'
+```
+
+The response for this is in the form of status codes only.
+
+| Status-Code | Meaning                                                                                |
+|-------------|----------------------------------------------------------------------------------------|
+| 200         | File was found, prospective deletion would succeed                                     |
+| 404         | File was not found in the database                                                     |
+| 410         | File metadata is in accounting table, but file is not on disk or already expired       |
+| 500         | An internal server error occurred due to corrupted metadata (missing data in database) |
 
 ### Delete a file
 
