@@ -65,7 +65,7 @@ export default class Arkitektonika {
         }
         this.logger.info(`Deleted ${deletionCounter} dangling files`);
         deletionCounter = 0;
-        for (let record of (await this._dataStorage.getAllRecords())) {
+        for (let record of (await this._dataStorage.getAllUnexpiredRecords())) {
             if (fs.existsSync(path.join(SCHEMATIC_DIR, record.downloadKey))) {
                 continue;
             }

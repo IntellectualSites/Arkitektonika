@@ -26,6 +26,13 @@ export default class Database implements IDataStorage {
         });
     }
 
+    getAllUnexpiredRecords(): Promise<SchematicRecord[]> {
+        return new Promise((resolve) => {
+            const rows = this.database.prepare('SELECT * FROM accounting WHERE expired IS NULL').all();
+            resolve(rows.map(value => Database.transformRowToRecord(value)));
+        });
+    }
+
     /**
      * @inheritDoc
      */
@@ -94,7 +101,7 @@ export default class Database implements IDataStorage {
         return new Promise(async (resolve, reject) => {
             try {
                 // retrieve rows to delete
-                const rows = this.database.prepare('SELECT * FROM accounting WHERE last_accessed <= ?')
+                const rows = this.database.prepare('SELECT * FROM accounting WHERE last_accessed <= ? AND expired IS NULL')
                     .all((Date.now() - milliseconds));
                 if (rows.length == 0) {
                     return resolve([]);
@@ -184,8 +191,8 @@ export default class Database implements IDataStorage {
             downloadKey: row.download_key,
             deleteKey: row.delete_key,
             fileName: row.filename,
-            expired: row.expired,
-            last_accessed: row.last_accessed
+            expired: row.expired ? new Date(row.expired) : undefined,
+            last_accessed: row.last_accessed ? new Date(row.last_accessed) : undefined
         }
     }
 }

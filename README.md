@@ -88,6 +88,7 @@ Or with a docker-compose configuration:
   "port": 3000,
   "prune": 1800000,
   "maxIterations": 20,
+  "maxSchematicSize": 1000000,
   "limiter": {
     "windowMs": 60000,
     "delayAfter": 30,
@@ -101,6 +102,7 @@ Or with a docker-compose configuration:
 | port               | on which port should the application bind                                                                                  |
 | prune              | defines how old records must be to be deleted by the prune script (in ms)                                                  |
 | maxIterations      | maximum amount of iterations to obtain a unique download and deletion token                                                |
+| maxSchematicSize   | maximum size of schematic files to be accepted (in bytes)                                                                  |
 | limiter.windowMs   | the frame of the limiter (after what duration should the limit gets reset)                                                 |
 | limiter.delayAfter | After how many requests during windowMs should delayMs be applied                                                          |
 | limiter.delayMs    | How many ms should the request take longer. Formula: `currentRequestDelay = (currentRequestAmount - delayAfter) * delayMs` |

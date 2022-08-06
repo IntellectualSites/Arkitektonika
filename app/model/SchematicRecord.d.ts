@@ -1,8 +1,8 @@
 export declare type SchematicRecord = {
-    id?: number | undefined,
+    id?: number,
     downloadKey: string,
     deleteKey: string,
     fileName: string,
-    last_accessed?: Date | undefined,
+    last_accessed?: Date,
     expired?: Date
 }

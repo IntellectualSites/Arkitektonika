@@ -4,6 +4,8 @@ export default interface IDataStorage {
 
     getAllRecords(): Promise<SchematicRecord[]>;
 
+    getAllUnexpiredRecords(): Promise<SchematicRecord[]>;
+
     /**
      * Retrieve a {@link SchematicRecord} from the current data storage implementation by its download key.
      *
