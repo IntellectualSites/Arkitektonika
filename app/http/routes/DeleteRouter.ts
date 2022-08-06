@@ -25,7 +25,7 @@ export const DELETE_ROUTER = (app: Arkitektonika, router: express.Application) =
 
     const fetchRecord = async (request: Request, response: Response): Promise<SchematicRecord | undefined> => {
         let record;
-        // search for record by download key
+        // search for record by deletion key
         try {
             record = await app.dataStorage.getSchematicRecordByDeleteKey(request.params.key);
         } catch (error) {

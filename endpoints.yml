@@ -1,0 +1,198 @@
+swagger: '2.0'
+info:
+  title: Arkitektonika Endpoint Definition
+  description: Collection of all available endpoints and their responses
+  version: 1.0.0
+basePath: '/'
+host: 'api.schematic.cloud'
+paths:
+  /upload:
+    post:
+      summary: Upload a NBT file
+      consumes:
+        - 'multipart/form-data'
+      responses:
+        200:
+          description: 'The NBT file was persisted'
+          schema:
+            properties:
+              download_key:
+                type: string
+              deletion_key:
+                type: string
+            required:
+              - download_key
+              - deletion_key
+        400:
+          description: 'An user error occurred (No file attached / invalid NBT)'
+          schema:
+            properties:
+              error:
+                description: A more precise description of the error
+                type: string
+            required:
+              - error
+        413:
+          description: 'The uploaded schematic file is too big'
+          schema:
+            properties:
+              error:
+                description: Containing the error message including the max upload size
+                type: string
+            required:
+              - error
+        500:
+          $ref: '#/responses/500'
+  /download/{key}:
+    head:
+      summary: Simulate a download request to get the matching headers before retrieving the actual file
+      parameters:
+        - name: key
+          description: The generated download key for that file
+          type: string
+          in: path
+          required: true
+          maxLength: 32
+          minLength: 32
+      responses:
+        200:
+          description: The NBT file would be downloaded on a GET request
+        404:
+          description: 'No schematic was found for the passed download key'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        420:
+          description: 'The schematic file has already expired'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        500:
+          $ref: '#/responses/500'
+    get:
+      summary: Download an uploded NBT file
+      parameters:
+        - name: key
+          description: The generated download key for that file
+          type: string
+          in: path
+          required: true
+          maxLength: 32
+          minLength: 32
+      produces:
+        - 'application/json'
+        - 'application/octet-stream'
+      responses:
+        200:
+          description: The NBT file is present and sent in the response body
+        404:
+          description: 'No schematic was found for the passed download key'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        420:
+          description: 'The schematic file has already expired'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        500:
+          $ref: '#/responses/500'
+  /delete/{key}:
+    head:
+      summary: Simulate a delete request to get the matching headers before deleting the actual file
+      parameters:
+        - name: key
+          description: The generated deletion key for that file
+          type: string
+          in: path
+          required: true
+          maxLength: 32
+          minLength: 32
+      responses:
+        200:
+          description: The NBT file would be deleted on a DELETE request
+        404:
+          description: 'No schematic was found for the passed deletion key'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        420:
+          description: 'The schematic file has already expired'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        429:
+          description: 'Too many requests were sent'
+        500:
+          $ref: '#/responses/500'
+    get:
+      summary: Delete an uploaded NBT file
+      parameters:
+        - name: key
+          description: The generated deletion key for that file
+          type: string
+          in: path
+          required: true
+          maxLength: 32
+          minLength: 32
+      responses:
+        200:
+          description: The NBT file was deleted
+        404:
+          description: 'No schematic was found for the passed deletion key'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        420:
+          description: 'The schematic file has already expired'
+          schema:
+            properties:
+              error:
+                description: Informational
+                type: string
+            required:
+              - error
+        429:
+          description: 'Too many requests were sent'
+        500:
+          $ref: '#/responses/500'
+
+responses:
+  500:
+    description: The request could not be handled, e.g. due to a database error
+    schema:
+      description: Basic structure of a 500 error
+      properties:
+        error:
+          description: Contains the component of Arkitektonika which is in charge of the error (Key-Generator / Database)
+          type: string
+      required:
+        - error
