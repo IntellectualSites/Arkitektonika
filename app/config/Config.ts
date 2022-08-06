@@ -5,6 +5,7 @@ export declare type Config = {
     port: number,
     prune: number,
     maxIterations: number,
+    maxSchematicSize: number,
     limiter: {
         windowMs: number,
         delayAfter: number,
@@ -16,6 +17,7 @@ const DEFAULT_CONFIG: Config = {
     port: 3000,
     prune: 1000 * 60 * 30,
     maxIterations: 20,
+    maxSchematicSize: 1000 * 1000, // 1 MB
     limiter: {
         windowMs: 1000 * 60,
         delayAfter: 30,

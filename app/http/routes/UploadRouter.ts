@@ -1,9 +1,10 @@
 import express from "express";
 import fileUpload, {UploadedFile} from 'express-fileupload';
 import Arkitektonika, {SCHEMATIC_DIR} from "../../Arkitektonika.js";
-import nbt from "prismarine-nbt";
 import * as fs from "fs";
 import path from "path";
+import {decode} from "nbt-ts";
+import {unzip} from "gzip-js";
 
 const UPLOAD_OPTIONS: fileUpload.Options = {
     abortOnLimit: true,
@@ -28,12 +29,25 @@ export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) =
 
         // Validate nbt file
         try {
-            await nbt.parse(fs.readFileSync(file.tempFilePath));
+            const content = fs.readFileSync(file.tempFilePath)
+            const deflated = Buffer.from(unzip(content))
+            const result = decode(deflated, {
+                unnamed: false
+            })
+            if (result.value == null) {
+                throw new Error("decoded value is null");
+            }
+            if (result.length > app.config.maxSchematicSize) {
+                fs.unlinkSync(file.tempFilePath);
+                return res.status(413).send({
+                    error: `Submitted NBT file exceeds max size of ${app.config.maxSchematicSize} bytes`
+                })
+            }
         } catch (error) {
-            app.logger.debug('Invalid request due to invalid nbt content');
+            app.logger.debug('Invalid request due to invalid nbt content: ' + error);
             fs.unlinkSync(file.tempFilePath);
             return res.status(400).send({
-                error: 'File is not valid NBT'
+                error: 'File is not valid NBT: ' + error
             });
         }
 
