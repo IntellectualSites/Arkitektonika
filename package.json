@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/IntellectualSites/Arkitektonika.git"
   },
+  "packageManager": "yarn@3.2.2",
   "type": "module",
   "author": "Jacob Andersen",
   "license": "ISC",
