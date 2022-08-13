@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "ts-node ./app/launch.ts",
+    "start": "ts-node-esm ./app/launch.ts",
     "start:prod": "npm run build && node ./dist/app/launch.js",
     "build": "npx tsc",
     "start:nodemon": "node ./node_modules/nodemon/bin/nodemon.js"

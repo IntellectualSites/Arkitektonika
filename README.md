@@ -31,14 +31,14 @@ Example Instances:
 
 ### Prebuilt images
 
-Prebuilt image available at https://hub.docker.com/r/pierreschwang/arkitektonika
+Prebuilt image available at https://hub.docker.com/r/intellectualsites/arkitektonika
 
 ### Build image locally
 
 Clone the entire repository and run the following commands:
 
 ```
-docker build -t intellectualsites/arkitektonika:custom .
+docker build -t intellectualsites/arkitektonika:<TAG> .
 ```
 
 ---
