@@ -4,5 +4,5 @@ tmp/
 .gitignore
 nodemon.json
 renovate.json
-LICENSE.md
+LICENSE
 README.md
