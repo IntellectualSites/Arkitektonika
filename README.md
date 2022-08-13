@@ -8,30 +8,31 @@ Example Instances:
 
 | Address                           | Expiry     |
 |-----------------------------------|------------|
-| https://ark.jacobandersen.dev     | 30 minutes |
 | https://api.schematic.cloud/      | 30 days    |
 
 ## To Run
 
-1. `git clone https://github.com/IntellectualSites/Arkitektonika.git`
-2. `cd Arkitektonika`
-3. `yarn install`
+### With Docker
 
-#### Without Typescript transpiling
+```bash
+docker pull intellectualsites/arkitektonika
+```
 
-4. `yarn start`
+### From scratch
+
+```sh
+git clone https://github.com/IntellectualSites/Arkitektonika.git &&
+cd Arkitektonika &&
+yarn install
+```
 
 #### With Typescript transpiling (recommended)
 
-4. `yarn start:prod`
+`yarn start:prod`
 
-## With Docker
+#### Without Typescript transpiling
 
----
-
-### Prebuilt images
-
-Prebuilt image available at https://hub.docker.com/r/intellectualsites/arkitektonika
+`yarn start`
 
 ### Build image locally
 
@@ -45,7 +46,7 @@ docker build -t intellectualsites/arkitektonika:<TAG> .
 
 Example docker compose:
 
-````yaml
+```yaml
 version: '3.8'
 
 services:
@@ -57,7 +58,7 @@ services:
       - ./data:/app/data # Mount the data folder (containing config file, database and schematic storage)
     environment:
       - LOG_LEVEL=DEBUG   # if debug logs should be printed to the console
-````
+```
 
 `/app/data` is mounted to the host at `/data` as that folder contains persistent data.
 
@@ -77,13 +78,13 @@ hours:
 
 Or with a docker-compose configuration:
 
-````
+```
 0 */12 * * * cd /srv/arkitektonika && docker-compose run --rm arkitektonika node app/launch.js --prune
-````
+```
 
 ## Configuration
 
-````json
+```json
 {
   "port": 3000,
   "prune": 1800000,
@@ -95,7 +96,7 @@ Or with a docker-compose configuration:
     "delayMs": 500
   }
 }
-````
+```
 
 | Config Key         | Description                                                                                                                |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -109,14 +110,14 @@ Or with a docker-compose configuration:
 
 ## File structure:
 
-````
+```
 data
 ├── config.json
 ├── database.db
 └── schemata
     ├── fe65d7edc37149c47171962dc26a039b
     └── a98f299c5cf294e6555617e83226bcdd
-````
+```
 
 `config.json` holds the user configuration data <br>
 `database.db` holds the required data for each schematic <br>
@@ -185,7 +186,7 @@ curl --location --request GET 'http://localhost:3000/download/db6186c8795740379d
 response:
 see **Check download headers** above.
 
-On success, the file is sent as an attachment for download to the browser / requestor.
+On success, the file is sent as an attachment for download to the browser / requester.
 
 ### Check deletion headers
 
