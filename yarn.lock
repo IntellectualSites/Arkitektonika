@@ -15,7 +15,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.18.10":
+"@babel/cli@npm:7.18.10":
   version: 7.18.10
   resolution: "@babel/cli@npm:7.18.10"
   dependencies:
@@ -58,7 +58,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.18.10":
+"@babel/core@npm:7.18.10":
   version: 7.18.10
   resolution: "@babel/core@npm:7.18.10"
   dependencies:
@@ -1111,7 +1111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:^7.18.10":
+"@babel/plugin-transform-runtime@npm:7.18.10":
   version: 7.18.10
   resolution: "@babel/plugin-transform-runtime@npm:7.18.10"
   dependencies:
@@ -1206,7 +1206,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.18.10":
+"@babel/preset-env@npm:7.18.10":
   version: 7.18.10
   resolution: "@babel/preset-env@npm:7.18.10"
   dependencies:
@@ -1306,7 +1306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.18.9":
+"@babel/runtime@npm:7.18.9":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
   dependencies:
@@ -1578,7 +1578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/better-sqlite3@npm:^7.6.0":
+"@types/better-sqlite3@npm:7.6.0":
   version: 7.6.0
   resolution: "@types/better-sqlite3@npm:7.6.0"
   dependencies:
@@ -1615,7 +1615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-fileupload@npm:^1.2.3":
+"@types/express-fileupload@npm:1.2.3":
   version: 1.2.3
   resolution: "@types/express-fileupload@npm:1.2.3"
   dependencies:
@@ -1636,7 +1636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-slow-down@npm:^1.3.2":
+"@types/express-slow-down@npm:1.3.2":
   version: 1.3.2
   resolution: "@types/express-slow-down@npm:1.3.2"
   dependencies:
@@ -1645,7 +1645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:^4.17.13":
+"@types/express@npm:*, @types/express@npm:4.17.13":
   version: 4.17.13
   resolution: "@types/express@npm:4.17.13"
   dependencies:
@@ -1657,7 +1657,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/gzip-js@npm:^0.3.3":
+"@types/gzip-js@npm:0.3.3":
   version: 0.3.3
   resolution: "@types/gzip-js@npm:0.3.3"
   dependencies:
@@ -1673,7 +1673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minimist@npm:^1.2.2":
+"@types/minimist@npm:1.2.2":
   version: 1.2.2
   resolution: "@types/minimist@npm:1.2.2"
   checksum: b8da83c66eb4aac0440e64674b19564d9d86c80ae273144db9681e5eeff66f238ade9515f5006ffbfa955ceff8b89ad2bd8ec577d7caee74ba101431fb07045d
@@ -1687,7 +1687,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.6.4":
+"@types/node@npm:18.6.4":
   version: 18.6.4
   resolution: "@types/node@npm:18.6.4"
   checksum: fc453dd2b541f5812ba1a8f957f577727cf2d8aee886f1d5c03eb153b2b3373d2e0953c5bd2b7a5b184073bc317f54ec91f1ec4830a58eda4a833e90654021de
@@ -1718,7 +1718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sqlite3@npm:^3.1.8":
+"@types/sqlite3@npm:3.1.8":
   version: 3.1.8
   resolution: "@types/sqlite3@npm:3.1.8"
   dependencies:
@@ -1861,36 +1861,36 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "arkitektonika@workspace:."
   dependencies:
-    "@babel/cli": ^7.18.10
-    "@babel/core": ^7.18.10
-    "@babel/plugin-transform-runtime": ^7.18.10
-    "@babel/preset-env": ^7.18.10
-    "@babel/runtime": ^7.18.9
-    "@types/better-sqlite3": ^7.6.0
-    "@types/express": ^4.17.13
-    "@types/express-fileupload": ^1.2.3
-    "@types/express-slow-down": ^1.3.2
-    "@types/gzip-js": ^0.3.3
-    "@types/minimist": ^1.2.2
-    "@types/node": ^18.6.4
-    "@types/sqlite3": ^3.1.8
-    better-sqlite3: ^7.6.2
+    "@babel/cli": 7.18.10
+    "@babel/core": 7.18.10
+    "@babel/plugin-transform-runtime": 7.18.10
+    "@babel/preset-env": 7.18.10
+    "@babel/runtime": 7.18.9
+    "@types/better-sqlite3": 7.6.0
+    "@types/express": 4.17.13
+    "@types/express-fileupload": 1.2.3
+    "@types/express-slow-down": 1.3.2
+    "@types/gzip-js": 0.3.3
+    "@types/minimist": 1.2.2
+    "@types/node": 18.6.4
+    "@types/sqlite3": 3.1.8
+    better-sqlite3: 7.6.2
     chalk: 5.0.1
-    express: ~4.18.1
-    express-fileupload: ^1.4.0
-    express-slow-down: ^1.4.0
-    express-winston: ^4.2.0
-    gzip-js: ^0.3.2
-    minimist: ^1.2.6
-    multer: ^1.4.5-lts.1
-    nanoid: ^4.0.0
-    nbt-ts: ^1.3.4
-    nodemon: ^2.0.19
-    sqlite3: ^5.0.11
-    ts-node: ^10.9.1
-    typescript: ^4.7.4
-    winston: ^3.8.1
-    winston-transport: ^4.5.0
+    express: 4.18.1
+    express-fileupload: 1.4.0
+    express-slow-down: 1.4.0
+    express-winston: 4.2.0
+    gzip-js: 0.3.2
+    minimist: 1.2.6
+    multer: 1.4.5-lts.1
+    nanoid: 4.0.0
+    nbt-ts: 1.3.4
+    nodemon: 2.0.19
+    sqlite3: 5.0.11
+    ts-node: 10.9.1
+    typescript: 4.7.4
+    winston: 3.8.1
+    winston-transport: 4.5.0
   languageName: unknown
   linkType: soft
 
@@ -1967,7 +1967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"better-sqlite3@npm:^7.6.2":
+"better-sqlite3@npm:7.6.2":
   version: 7.6.2
   resolution: "better-sqlite3@npm:7.6.2"
   dependencies:
@@ -2645,7 +2645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-fileupload@npm:^1.4.0":
+"express-fileupload@npm:1.4.0":
   version: 1.4.0
   resolution: "express-fileupload@npm:1.4.0"
   dependencies:
@@ -2654,7 +2654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-slow-down@npm:^1.4.0":
+"express-slow-down@npm:1.4.0":
   version: 1.4.0
   resolution: "express-slow-down@npm:1.4.0"
   dependencies:
@@ -2663,7 +2663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-winston@npm:^4.2.0":
+"express-winston@npm:4.2.0":
   version: 4.2.0
   resolution: "express-winston@npm:4.2.0"
   dependencies:
@@ -2675,7 +2675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:~4.18.1":
+"express@npm:4.18.1":
   version: 4.18.1
   resolution: "express@npm:4.18.1"
   dependencies:
@@ -2951,7 +2951,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gzip-js@npm:^0.3.2":
+"gzip-js@npm:0.3.2":
   version: 0.3.2
   resolution: "gzip-js@npm:0.3.2"
   dependencies:
@@ -3496,17 +3496,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimist@npm:1.2.6":
+  version: 1.2.6
+  resolution: "minimist@npm:1.2.6"
+  checksum: d15428cd1e11eb14e1233bcfb88ae07ed7a147de251441d61158619dfb32c4d7e9061d09cab4825fdee18ecd6fce323228c8c47b5ba7cd20af378ca4048fb3fb
+  languageName: node
+  linkType: hard
+
 "minimist@npm:^1.2.0, minimist@npm:^1.2.3, minimist@npm:^1.2.5":
   version: 1.2.5
   resolution: "minimist@npm:1.2.5"
   checksum: 86706ce5b36c16bfc35c5fe3dbb01d5acdc9a22f2b6cc810b6680656a1d2c0e44a0159c9a3ba51fb072bb5c203e49e10b51dcd0eec39c481f4c42086719bae52
-  languageName: node
-  linkType: hard
-
-"minimist@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "minimist@npm:1.2.6"
-  checksum: d15428cd1e11eb14e1233bcfb88ae07ed7a147de251441d61158619dfb32c4d7e9061d09cab4825fdee18ecd6fce323228c8c47b5ba7cd20af378ca4048fb3fb
   languageName: node
   linkType: hard
 
@@ -3652,7 +3652,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multer@npm:^1.4.5-lts.1":
+"multer@npm:1.4.5-lts.1":
   version: 1.4.5-lts.1
   resolution: "multer@npm:1.4.5-lts.1"
   dependencies:
@@ -3667,7 +3667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^4.0.0":
+"nanoid@npm:4.0.0":
   version: 4.0.0
   resolution: "nanoid@npm:4.0.0"
   bin:
@@ -3683,7 +3683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nbt-ts@npm:^1.3.4":
+"nbt-ts@npm:1.3.4":
   version: 1.3.4
   resolution: "nbt-ts@npm:1.3.4"
   checksum: a1560c8d85edc8ffabf04f6906143a9e1c881622b07843c5cd6def7f3cc2348e917db818ff2c3d182a85a1ef2a76f460f22f418a57bcc123257b8d1a0fee50c5
@@ -3776,7 +3776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^2.0.19":
+"nodemon@npm:2.0.19":
   version: 2.0.19
   resolution: "nodemon@npm:2.0.19"
   dependencies:
@@ -4493,7 +4493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sqlite3@npm:^5.0.11":
+"sqlite3@npm:5.0.11":
   version: 5.0.11
   resolution: "sqlite3@npm:5.0.11"
   dependencies:
@@ -4707,7 +4707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.9.1":
+"ts-node@npm:10.9.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:
@@ -4771,7 +4771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.4":
+"typescript@npm:4.7.4":
   version: 4.7.4
   resolution: "typescript@npm:4.7.4"
   bin:
@@ -4781,7 +4781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
   resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"
   bin:
@@ -4933,7 +4933,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston-transport@npm:^4.5.0":
+"winston-transport@npm:4.5.0, winston-transport@npm:^4.5.0":
   version: 4.5.0
   resolution: "winston-transport@npm:4.5.0"
   dependencies:
@@ -4944,7 +4944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:^3.8.1":
+"winston@npm:3.8.1":
   version: 3.8.1
   resolution: "winston@npm:3.8.1"
   dependencies:
