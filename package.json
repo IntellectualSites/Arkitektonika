@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@babel/cli": "7.18.10",
-    "@babel/core": "7.18.10",
+    "@babel/core": "7.18.13",
     "@babel/preset-env": "7.18.10",
     "@babel/runtime": "7.18.9",
     "better-sqlite3": "7.6.2",
