@@ -1519,12 +1519,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/busboy@npm:^0":
-  version: 0.3.2
-  resolution: "@types/busboy@npm:0.3.2"
+"@types/busboy@npm:*":
+  version: 1.5.0
+  resolution: "@types/busboy@npm:1.5.0"
   dependencies:
     "@types/node": "*"
-  checksum: dd8cbd214c24966f3a91c37eca04bbcf6bdd027db352b823a8fb57a486703d8f5e59958a55c4f1e01db10c2d4535bda58dd92bf1fe56b3bd7b08ecb078bd6ec6
+  checksum: ffa7bf25c0395f6927526b7d97e70cd2df789e4ca0d231e41855fb08542fa236891ce457d83cc50cac6e5cef6be092ab80597070dcf1413f736462690a23e987
   languageName: node
   linkType: hard
 
@@ -1537,13 +1537,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-fileupload@npm:1.2.3":
-  version: 1.2.3
-  resolution: "@types/express-fileupload@npm:1.2.3"
+"@types/express-fileupload@npm:1.4.1":
+  version: 1.4.1
+  resolution: "@types/express-fileupload@npm:1.4.1"
   dependencies:
-    "@types/busboy": ^0
+    "@types/busboy": "*"
     "@types/express": "*"
-  checksum: 91fbb58fbb9e83d8dc2a4b702643ad06482a48109f4c422246e1287a6ef6d1cfbe20909c78886ae220ec060a3d9a01f5b33dc892aaefadc36472ba6a37b01bb5
+  checksum: 54fff7a11dea74ddc716c0ae610dbf557fa27eb5eb4dff99cd2c88c4722321188342319e77d4df94e801d601d5ccd8287d0c31aea786d652b7760a1e681223b6
   languageName: node
   linkType: hard
 
@@ -1783,7 +1783,7 @@ __metadata:
     "@babel/runtime": 7.18.9
     "@types/better-sqlite3": 7.6.0
     "@types/express": 4.17.13
-    "@types/express-fileupload": 1.2.3
+    "@types/express-fileupload": 1.4.1
     "@types/express-slow-down": 1.3.2
     "@types/gzip-js": 0.3.3
     "@types/minimist": 1.2.2
