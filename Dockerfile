@@ -24,3 +24,11 @@ RUN yarn install --only=production
 COPY --from=builder /usr/src/app/dist/app ./app
 EXPOSE 3000
 CMD [ "node", "app/launch.js" ]
+
+LABEL \
+  org.opencontainers.image.vendor="IntellectualSites" \
+  org.opencontainers.image.title="Arkitektonika" \
+  org.opencontainers.image.description="A REST repository for NBT data for Minecraft" \
+  org.opencontainers.image.url="https://github.com/IntellectualSites" \
+  org.opencontainers.image.source="https://github.com/IntellectualSites/Arkitektonika" \
+  org.opencontainers.image.licenses="ISC"

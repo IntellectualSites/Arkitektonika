@@ -1,5 +1,11 @@
 # Arkitektonika
 
+<p>
+    <img src="https://raw.githubusercontent.com/IntellectualSites/Assets/main/standalone/Arkitektonika/Arkitektonika.png" width="150">
+</p>
+
+---
+
 Arkitektonika is a REST repository for NBT data. It accepts uploads of valid NBT data and stores them in a local folder
 while accounting for its metadata in a local sqlite database. Optionally, uploaded files can be expired based on the
 configurable age by running the prune script. Files can always be deleted via their deletion key.
@@ -17,6 +23,8 @@ Example Instances:
 ```bash
 docker pull intellectualsites/arkitektonika
 ```
+
+Available on https://hub.docker.com/r/intellectualsites/arkitektonika
 
 ### From scratch
 
