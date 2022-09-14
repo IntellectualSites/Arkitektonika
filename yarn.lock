@@ -1854,7 +1854,7 @@ __metadata:
     chalk: 5.0.1
     express: 4.18.1
     express-fileupload: 1.4.0
-    express-slow-down: 1.4.0
+    express-slow-down: 1.4.1
     express-winston: 4.2.0
     gzip-js: 0.3.2
     minimist: 1.2.6
@@ -2611,12 +2611,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-slow-down@npm:1.4.0":
-  version: 1.4.0
-  resolution: "express-slow-down@npm:1.4.0"
+"express-slow-down@npm:1.4.1":
+  version: 1.4.1
+  resolution: "express-slow-down@npm:1.4.1"
   dependencies:
     defaults: ^1.0.3
-  checksum: 8afa71ce29a21ba253ad9c351b3714eff6fc760841e3b6d323535d9f37cbec2031fd30282d2e31b14f56d1c82b9e2ece4c1cc1d6a1776c02446effe12e645938
+    on-finished: ^2.4.1
+  checksum: 4a004976c25e2ea38405a09897379c90d5aa33c4e83a27257458d8380b6a92f6b84d0176c789f45cdd61da9edd5c6b1105420084273f0bb6ec2bd1de17919600
   languageName: node
   linkType: hard
 
@@ -3771,7 +3772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"on-finished@npm:2.4.1":
+"on-finished@npm:2.4.1, on-finished@npm:^2.4.1":
   version: 2.4.1
   resolution: "on-finished@npm:2.4.1"
   dependencies:
