@@ -39,9 +39,9 @@
     ]
   },
   "dependencies": {
-    "@babel/cli": "7.18.10",
-    "@babel/core": "7.19.0",
-    "@babel/preset-env": "7.19.0",
+    "@babel/cli": "7.19.3",
+    "@babel/core": "7.19.3",
+    "@babel/preset-env": "7.19.3",
     "@babel/runtime": "7.19.0",
     "better-sqlite3": "7.6.2",
     "chalk": "5.0.1",
@@ -60,7 +60,7 @@
     "winston-transport": "4.5.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.18.10",
+    "@babel/plugin-transform-runtime": "7.19.1",
     "@types/better-sqlite3": "7.6.0",
     "@types/express": "4.17.14",
     "@types/express-fileupload": "1.4.1",
