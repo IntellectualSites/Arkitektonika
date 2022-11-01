@@ -20,7 +20,7 @@ Example Instances:
 
 ### With Docker
 
-```bash
+```sh
 docker pull intellectualsites/arkitektonika
 ```
 
@@ -36,17 +36,21 @@ yarn install
 
 #### With Typescript transpiling (recommended)
 
-`yarn start:prod`
+```sh
+yarn start:prod
+```
 
 #### Without Typescript transpiling
 
-`yarn start`
+```sh
+yarn start
+```
 
 ### Build image locally
 
 Clone the entire repository and run the following commands:
 
-```
+```sh
 docker build -t intellectualsites/arkitektonika:<TAG> .
 ```
 
@@ -73,20 +77,22 @@ services:
 ## Prune data
 
 Execute the start command with the prune flag to execute the prune routine:
-``yarn start:prod --prune``
+```sh
+yarn start:prod --prune
+```
 
 ## Set up Expiration
 
 Create a cron job that runs at whatever frequency you desire. As an example, this will run the pruning script every 12
 hours:
 
-```
+```sh
 0 */12 * * * cd /srv/arkitektonika && /usr/bin/yarn start:prod --prune
 ```
 
 Or with a docker-compose configuration:
 
-```
+```sh
 0 */12 * * * cd /srv/arkitektonika && docker-compose run --rm arkitektonika node app/launch.js --prune
 ```
 
@@ -139,7 +145,7 @@ All routes will be available at the exposed port (e.g. `localhost:3000`).
 
 **POST `INSTANCE_URL/upload`**: send your file as multipart/form-data; example:
 
-```bash
+```sh
 curl --location --request POST 'http://localhost:3000/upload' \
 --form 'schematic=@/path/to/plot.schem'
 ```
@@ -170,7 +176,7 @@ not the `delete_key`.
 **HEAD `INSTANCE_URL/download/:download_key`**: check what headers you'd get if you sent a POST request for a file with
 the given download_key; example:
 
-```bash
+```sh
 curl --location --head 'http://localhost:3000/download/db6186c8795740379d26fc61ecba1a24'
 ```
 
@@ -187,7 +193,7 @@ The response for this is in the form of status codes only.
 
 **GET `INSTANCE_URL/download/:download_key`**: download a file with the given `download_key`; example:
 
-```bash
+```sh
 curl --location --request GET 'http://localhost:3000/download/db6186c8795740379d26fc61ecba1a24'
 ```
 
@@ -201,7 +207,7 @@ On success, the file is sent as an attachment for download to the browser / requ
 **HEAD `INSTANCE_URL/delete/:delete_key`**: check what headers you'd get if you sent a DELETE request for a file with
 the given delete_key; example:
 
-```bash
+```sh
 curl --location --head 'http://localhost:3000/delete/11561161dffe4a1298992ce063be5ff9'
 ```
 
@@ -218,7 +224,7 @@ The response for this is in the form of status codes only.
 
 **DELETE `PUBLIC_URL/delete/:delete_key`**: delete a file with the given `delete_key`; example:
 
-```bash
+```sh
 curl --location --request DELETE 'http://localhost:3000/delete/11561161dffe4a1298992ce063be5ff9'
 ```
 
