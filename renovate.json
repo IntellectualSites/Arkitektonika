@@ -5,5 +5,11 @@
     ":semanticCommitsDisabled"
   ],
   "labels": ["dependencies"],
-  "rebaseWhen": "conflicted"
+  "rebaseWhen": "conflicted",
+    "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3
+    }
+  ]
 }
