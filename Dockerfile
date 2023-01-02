@@ -1,6 +1,6 @@
 # Build the application
 # -> transpile typescript to javascript
-FROM node:lts AS builder
+FROM node:lts@sha256:e9ad817b0d42b4d177a4bef8a0aff97c352468a008c3fdb2b4a82533425480df AS builder
 
 WORKDIR /usr/src/app
 
