@@ -31,4 +31,5 @@ LABEL \
   org.opencontainers.image.description="A REST repository for NBT data for Minecraft" \
   org.opencontainers.image.url="https://github.com/IntellectualSites" \
   org.opencontainers.image.source="https://github.com/IntellectualSites/Arkitektonika" \
-  org.opencontainers.image.licenses="ISC"
+  org.opencontainers.image.licenses="ISC" \
+  com.docker.image.source.entrypoint=Dockerfile
