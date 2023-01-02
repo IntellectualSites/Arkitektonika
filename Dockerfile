@@ -13,7 +13,7 @@ RUN yarn install ; yarn build
 # Application runner
 # -> runs the transpiled code itself
 # seperated from builder context to keep image as slim as possible
-FROM node:lts
+FROM node:lts@sha256:e9ad817b0d42b4d177a4bef8a0aff97c352468a008c3fdb2b4a82533425480df
 
 WORKDIR /app
 ENV NODE_ENV=production
