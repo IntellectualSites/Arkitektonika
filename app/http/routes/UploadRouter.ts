@@ -16,7 +16,10 @@ const UPLOAD_OPTIONS: fileUpload.Options = {
     uploadTimeout: 1000 * 15
 };
 export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) => {
-
+    router.options('/upload', (req, res) => {
+        res.setHeader('Access-Control-Allow-Methods', 'DELETE');
+        res.sendStatus(204);
+    })
     router.post('/upload', fileUpload(UPLOAD_OPTIONS), (async (req, res) => {
         const file = req.files?.schematic as UploadedFile;
 

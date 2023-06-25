@@ -34,6 +34,11 @@ export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application)
         return record;
     }
 
+    router.options('/download/:key', (req, res) => {
+        res.setHeader('Access-Control-Allow-Methods', 'HEAD, GET');
+        res.sendStatus(204);
+    })
+
     router.head('/download/:key', (async (req, res) => {
         if (await fetchRecord(req, res) != undefined) {
             res.sendStatus(200);
