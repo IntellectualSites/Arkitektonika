@@ -17,7 +17,7 @@ const UPLOAD_OPTIONS: fileUpload.Options = {
 };
 export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) => {
     router.options('/upload', (req, res) => {
-        res.setHeader('Access-Control-Allow-Methods', 'DELETE');
+        res.setHeader('Access-Control-Allow-Methods', 'POST');
         res.sendStatus(204);
     })
     router.post('/upload', fileUpload(UPLOAD_OPTIONS), (async (req, res) => {
