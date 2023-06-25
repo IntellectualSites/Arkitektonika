@@ -6,6 +6,7 @@ export declare type Config = {
     prune: number,
     maxIterations: number,
     maxSchematicSize: number,
+    allowedOrigin: string,
     limiter: {
         windowMs: number,
         delayAfter: number,
@@ -18,6 +19,7 @@ const DEFAULT_CONFIG: Config = {
     prune: 1000 * 60 * 30,
     maxIterations: 20,
     maxSchematicSize: 1000 * 1000, // 1 MB
+    allowedOrigin: '*',
     limiter: {
         windowMs: 1000 * 60,
         delayAfter: 30,

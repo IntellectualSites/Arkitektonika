@@ -17,7 +17,7 @@ export default class ArkitektonikaServer {
         this.app = express();
 
         this.app.use((req, res, next) => {
-           res.setHeader('Access-Control-Allow-Origin', '*');
+           res.setHeader('Access-Control-Allow-Origin', app.config.allowedOrigin);
            next();
         });
         this.app.use(this.logger.getExpressLogger());
