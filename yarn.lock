@@ -1756,12 +1756,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sqlite3@npm:3.1.8":
-  version: 3.1.8
-  resolution: "@types/sqlite3@npm:3.1.8"
+"@types/sqlite3@npm:3.1.11":
+  version: 3.1.11
+  resolution: "@types/sqlite3@npm:3.1.11"
   dependencies:
     "@types/node": "*"
-  checksum: 5f68d93a04e6d99fb0cd3275fc37392ed74ba2fe3cc3a147383a939ff6bc624a98fedecfee814b416358285f85c793ce61be0b1d5f924681232ad24c3a2c56f2
+  checksum: bcda2df582bdc1e1c0f0fa2e4ca0c5188207155eac52518244a3e7517d3c58a1f441871a7ec9088f2281af1bfdc5175c082a2c13da920c51cb7f3aa2f17e8d7b
   languageName: node
   linkType: hard
 
@@ -1911,7 +1911,7 @@ __metadata:
     "@types/gzip-js": 0.3.3
     "@types/minimist": 1.2.2
     "@types/node": 18.17.5
-    "@types/sqlite3": 3.1.8
+    "@types/sqlite3": 3.1.11
     better-sqlite3: 8.5.0
     chalk: 5.3.0
     express: 4.18.2
