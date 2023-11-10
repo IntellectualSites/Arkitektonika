@@ -1711,10 +1711,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minimist@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@types/minimist@npm:1.2.2"
-  checksum: b8da83c66eb4aac0440e64674b19564d9d86c80ae273144db9681e5eeff66f238ade9515f5006ffbfa955ceff8b89ad2bd8ec577d7caee74ba101431fb07045d
+"@types/minimist@npm:1.2.5":
+  version: 1.2.5
+  resolution: "@types/minimist@npm:1.2.5"
+  checksum: 477047b606005058ab0263c4f58097136268007f320003c348794f74adedc3166ffc47c80ec3e94687787f2ab7f4e72c468223946e79892cf0fd9e25e9970a90
   languageName: node
   linkType: hard
 
@@ -1909,7 +1909,7 @@ __metadata:
     "@types/express-fileupload": 1.4.1
     "@types/express-slow-down": 1.3.2
     "@types/gzip-js": 0.3.3
-    "@types/minimist": 1.2.2
+    "@types/minimist": 1.2.5
     "@types/node": 18.17.5
     "@types/sqlite3": 3.1.8
     better-sqlite3: 8.5.0
