@@ -14,7 +14,7 @@ export default class Database implements IDataStorage {
 
     constructor(logger: Logger) {
         this.database = sqlite(path.join(DATA_DIR, 'database.db'), {
-            verbose: (message, additionalArgs) => logger.debug(message, additionalArgs)
+            verbose: (message, additionalArgs) => logger.debug(String(message), additionalArgs)
         });
         this.migrate();
     }
