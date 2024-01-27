@@ -4,7 +4,7 @@ import Arkitektonika, {SCHEMATIC_DIR} from "../../Arkitektonika.js";
 import * as fs from "fs";
 import path from "path";
 import {decode} from "nbt-ts";
-import {unzip} from "gzip-js";
+import Pako from "pako";
 
 const UPLOAD_OPTIONS: fileUpload.Options = {
     abortOnLimit: true,
@@ -33,7 +33,7 @@ export const UPLOAD_ROUTER = (app: Arkitektonika, router: express.Application) =
         // Validate nbt file
         try {
             const content = fs.readFileSync(file.tempFilePath)
-            const deflated = Buffer.from(unzip(content))
+            const deflated = Buffer.from(Pako.ungzip(content))
             const result = decode(deflated, {
                 unnamed: false
             })
