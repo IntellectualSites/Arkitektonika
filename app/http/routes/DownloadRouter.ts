@@ -50,12 +50,8 @@ export const DOWNLOAD_ROUTER = (app: Arkitektonika, router: express.Application)
         if (!record) {
             return;
         }
-        // construct the total path to the stored file internally
-        const filePath = path.join(SCHEMATIC_DIR, record.downloadKey);
-        // try to read binary data and send to client with initial file name
-        const data = fs.readFileSync(filePath);
         res.setHeader('Content-Disposition', `attachment; filename="${record.fileName}"`)
-        res.status(200).send(data);
+        fs.createReadStream(path.join(SCHEMATIC_DIR, record.downloadKey)).pipe(res)
     }));
 
     return router;

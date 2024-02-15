@@ -20,7 +20,7 @@ export const DELETE_ROUTER = (app: Arkitektonika, router: express.Application) =
     const LIMITER = slowDown({
         windowMs: app.config.limiter.windowMs || 1000 * 60,
         delayAfter: app.config.limiter.delayAfter || 30,
-        delayMs: app.config.limiter.delayMs || 500
+        delayMs: () => app.config.limiter.delayMs || 500
     });
 
     const fetchRecord = async (request: Request, response: Response): Promise<SchematicRecord | undefined> => {
