@@ -58,7 +58,7 @@
     "pako": "^2.1.0",
     "sqlite3": "5.1.7",
     "winston": "3.11.0",
-    "winston-transport": "4.6.0"
+    "winston-transport": "4.7.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.23.9",
