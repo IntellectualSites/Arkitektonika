@@ -1921,7 +1921,7 @@ __metadata:
     "@types/node": "npm:20.11.5"
     "@types/pako": "npm:^2.0.3"
     "@types/sqlite3": "npm:3.1.11"
-    better-sqlite3: "npm:9.3.0"
+    better-sqlite3: "npm:9.4.1"
     chalk: "npm:5.3.0"
     express: "npm:4.18.2"
     express-fileupload: "npm:1.4.3"
@@ -2005,14 +2005,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"better-sqlite3@npm:9.3.0":
-  version: 9.3.0
-  resolution: "better-sqlite3@npm:9.3.0"
+"better-sqlite3@npm:9.4.1":
+  version: 9.4.1
+  resolution: "better-sqlite3@npm:9.4.1"
   dependencies:
     bindings: "npm:^1.5.0"
     node-gyp: "npm:latest"
     prebuild-install: "npm:^7.1.1"
-  checksum: 10c0/08943620079dd3f7de7e12a7cb63b9a6ca5b399ca3e06363f120b2589c86cadef2eca56558243bfaf930fb28b4d956ab0b3910bc8b09a35276670efe7b7c516c
+  checksum: 10c0/dc9ca07240d63222901a838ec0bd49b72e8bee1d7355e8b2c148958e204e7629b476894395259d44cf3234d8ed18c44a85dde0bff826c87510ecd8f7fa9f2aa7
   languageName: node
   linkType: hard
 
