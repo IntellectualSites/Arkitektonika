@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "ts-node-esm ./app/launch.ts",
-    "start:prod": "npm run build && node ./dist/app/launch.js",
+    "start:prod": "yarn build && node ./dist/app/launch.js",
     "build": "tsc",
     "start:nodemon": "node ./node_modules/nodemon/bin/nodemon.js"
   },
