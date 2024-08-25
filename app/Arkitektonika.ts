@@ -7,7 +7,10 @@ import * as fs from "fs";
 import {Config, loadConfig} from "./config/Config.js";
 import {fileURLToPath} from "url";
 
-export const DATA_DIR: string = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'data');
+const ROOT_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
+const PACKAGE_JSON = path.join(ROOT_DIR, "package.json")
+
+export const DATA_DIR: string = path.join(ROOT_DIR, 'data');
 export const SCHEMATIC_DIR: string = path.join(DATA_DIR, 'schemata');
 
 export default class Arkitektonika {
@@ -36,6 +39,7 @@ export default class Arkitektonika {
      * Starts the http server for production usage.
      */
     public run(): void {
+        process.env.ARK_VERSION = JSON.parse(fs.readFileSync(PACKAGE_JSON).toString()).version
         this.httpServer.start(this._config.port || 3000);
     }
 

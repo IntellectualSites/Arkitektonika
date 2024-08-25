@@ -67,12 +67,12 @@ services:
     image: intellectualsites/arkitektonika:dev
     restart: unless-stopped
     volumes:
-      - ./data:/app/data # Mount the data folder (containing config file, database and schematic storage)
+      - /home/ark/data:/data # Mount the data folder (containing config file, database and schematic storage)
     environment:
       - LOG_LEVEL=DEBUG   # if debug logs should be printed to the console
 ```
 
-`/app/data` is mounted to the host at `/data` as that folder contains persistent data.
+`/data` is mounted to the host at `/home/ark/data` as that folder contains persistent data.
 
 ## Prune data
 
