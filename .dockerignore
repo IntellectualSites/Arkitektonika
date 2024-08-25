@@ -1,8 +1,7 @@
 data/
 node_modules/
 tmp/
+.github/
 .gitignore
 nodemon.json
 renovate.json
-LICENSE
-README.md
