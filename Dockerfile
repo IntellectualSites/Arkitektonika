@@ -25,6 +25,9 @@ COPY .yarnrc.yml ./
 COPY --from=builder /usr/src/app/dist/app ./app
 RUN corepack enable ; yarn set version latest; \
     RUN yarn workspaces focus --all --production && rm -rf "$(yarn cache clean)" ; yarn install
+# "temporary" fix to allow directory traversal in both docker and non-docker environments
+# Can't just change the app directory, as that might break existing directory mounts - so it'll do
+RUN cp package.json ./../package.json
 EXPOSE 3000
 CMD [ "node", "app/launch.js" ]
 
