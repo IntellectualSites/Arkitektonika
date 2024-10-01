@@ -1764,12 +1764,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.5.1":
-  version: 22.5.1
-  resolution: "@types/node@npm:22.5.1"
+"@types/node@npm:22.7.4":
+  version: 22.7.4
+  resolution: "@types/node@npm:22.7.4"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/35373176d8a1d4e16004a1ed303e68d39e4c6341024dc056f2577982df98c1a045a6b677f12ed557796f09bbf7d621f428f6874cc37ed28f7b336fa604b5f6a6
+  checksum: 10c0/c22bf54515c78ff3170142c1e718b90e2a0003419dc2d55f79c9c9362edd590a6ab1450deb09ff6e1b32d1b4698da407930b16285e8be3a009ea6cd2695cac01
   languageName: node
   linkType: hard
 
@@ -1959,7 +1959,7 @@ __metadata:
     "@types/express-slow-down": "npm:1.3.5"
     "@types/gzip-js": "npm:0.3.5"
     "@types/minimist": "npm:1.2.5"
-    "@types/node": "npm:22.5.1"
+    "@types/node": "npm:22.7.4"
     "@types/pako": "npm:2.0.3"
     better-sqlite3: "npm:11.2.1"
     chalk: "npm:5.3.0"
