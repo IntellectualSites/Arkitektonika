@@ -1447,12 +1447,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/better-sqlite3@npm:7.6.11":
-  version: 7.6.11
-  resolution: "@types/better-sqlite3@npm:7.6.11"
+"@types/better-sqlite3@npm:7.6.12":
+  version: 7.6.12
+  resolution: "@types/better-sqlite3@npm:7.6.12"
   dependencies:
     "@types/node": "npm:*"
-  checksum: 8/981740c78f97961bf1d8e78ed8bc841792cb25695afd9d920769d5b890d40ddf3724ace8a4db1adbf634c2f05c6efe3491ce9bf66818bacd93629ea060493546
+  checksum: 10c0/5367de7492e2c697aa20cc4024ba26210971d15f60c01ef691eddfbbfd39ccf9f80d5129fd7fd6c76c98804739325e23d2b156b0eac8f5a7665ba374a08ac1e7
   languageName: node
   linkType: hard
 
@@ -1771,7 +1771,7 @@ __metadata:
     "@babel/plugin-transform-runtime": "npm:7.25.9"
     "@babel/preset-env": "npm:7.26.0"
     "@babel/runtime": "npm:7.26.0"
-    "@types/better-sqlite3": "npm:7.6.11"
+    "@types/better-sqlite3": "npm:7.6.12"
     "@types/express": "npm:4.17.21"
     "@types/express-fileupload": "npm:1.5.1"
     "@types/express-slow-down": "npm:1.3.5"
