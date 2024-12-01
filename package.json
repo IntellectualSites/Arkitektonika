@@ -57,7 +57,7 @@
     "ts-node": "10.9.2",
     "typescript": "5.7.2",
     "winston": "3.17.0",
-    "winston-transport": "4.8.0"
+    "winston-transport": "4.9.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.25.9",
