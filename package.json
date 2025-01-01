@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/IntellectualSites/Arkitektonika.git"
   },
-  "packageManager": "yarn@4.5.3",
+  "packageManager": "yarn@4.6.0",
   "type": "module",
   "author": "IntellectualSites",
   "license": "ISC",
