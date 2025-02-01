@@ -1825,7 +1825,7 @@ __metadata:
     "@types/node": "npm:22.12.0"
     "@types/pako": "npm:2.0.3"
     better-sqlite3: "npm:11.8.1"
-    chalk: "npm:5.3.0"
+    chalk: "npm:5.4.1"
     express: "npm:4.21.2"
     express-fileupload: "npm:1.5.1"
     express-slow-down: "npm:2.0.3"
@@ -2122,10 +2122,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:5.3.0":
-  version: 5.3.0
-  resolution: "chalk@npm:5.3.0"
-  checksum: 8/623922e077b7d1e9dedaea6f8b9e9352921f8ae3afe739132e0e00c275971bdd331268183b2628cf4ab1727c45ea1f28d7e24ac23ce1db1eb653c414ca8a5a80
+"chalk@npm:5.4.1":
+  version: 5.4.1
+  resolution: "chalk@npm:5.4.1"
+  checksum: 10c0/b23e88132c702f4855ca6d25cb5538b1114343e41472d5263ee8a37cccfccd9c4216d111e1097c6a27830407a1dc81fecdf2a56f2c63033d4dbbd88c10b0dcef
   languageName: node
   linkType: hard
 
