@@ -43,7 +43,7 @@
     "@babel/core": "7.26.10",
     "@babel/preset-env": "7.26.9",
     "@babel/runtime": "7.27.0",
-    "better-sqlite3": "11.8.1",
+    "better-sqlite3": "11.9.1",
     "chalk": "5.4.1",
     "express": "4.21.2",
     "express-fileupload": "1.5.1",
