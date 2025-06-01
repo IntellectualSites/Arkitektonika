@@ -1488,12 +1488,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-slow-down@npm:1.3.5":
-  version: 1.3.5
-  resolution: "@types/express-slow-down@npm:1.3.5"
+"@types/express-slow-down@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@types/express-slow-down@npm:2.0.0"
   dependencies:
-    "@types/express": "npm:*"
-  checksum: 8/dabc59f9d303b89b0176b83df0be61cced4ddd86c48b8d5711894ea3742e162ab736bc0de40f4d005a7461cd1b4a2735f6e9ab94b5280e25cef8c26d0966efe2
+    express-slow-down: "npm:*"
+  checksum: 10c0/e0bcdcbfcd3a8a7cf78abd5482c1383d4b8eb5e9b3ff23a3c05e8bc390f2f04595d69fe5ead8b2ee6f4acad60a472831b6dac33ede8f1d69fb54679697aeff31
   languageName: node
   linkType: hard
 
@@ -1759,7 +1759,7 @@ __metadata:
     "@types/better-sqlite3": "npm:7.6.13"
     "@types/express": "npm:4.17.22"
     "@types/express-fileupload": "npm:1.5.1"
-    "@types/express-slow-down": "npm:1.3.5"
+    "@types/express-slow-down": "npm:2.0.0"
     "@types/gzip-js": "npm:0.3.5"
     "@types/minimist": "npm:1.2.5"
     "@types/node": "npm:22.15.24"
@@ -1768,7 +1768,7 @@ __metadata:
     chalk: "npm:5.4.1"
     express: "npm:4.21.2"
     express-fileupload: "npm:1.5.1"
-    express-slow-down: "npm:2.0.3"
+    express-slow-down: "npm:2.1.0"
     express-winston: "npm:4.2.0"
     minimist: "npm:1.2.8"
     multer: "npm:1.4.5-lts.2"
@@ -2547,14 +2547,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-slow-down@npm:2.0.3":
-  version: 2.0.3
-  resolution: "express-slow-down@npm:2.0.3"
+"express-slow-down@npm:*, express-slow-down@npm:2.1.0":
+  version: 2.1.0
+  resolution: "express-slow-down@npm:2.1.0"
   dependencies:
     express-rate-limit: "npm:7"
   peerDependencies:
     express: 4 || 5 || ^5.0.0-beta.1
-  checksum: 8/ee014c829d0e5bffc879bad4a41b16ca54d1e6459da84b13894b2cbfd168e0250f974376cdf7ae50465349a2559d451022137fc816f50e292945ee1a2638e43f
+  checksum: 10c0/0aad109e9b529adbec99b1a8584a9d545f748de5a04518862c72ed5c7987d76a069448b6f89fd2e794e1317e136170a069917fc0f68ca354bd2f0c4d6c86c7ae
   languageName: node
   linkType: hard
 
