@@ -1986,7 +1986,7 @@ __metadata:
     "@types/minimist": "npm:1.2.5"
     "@types/node": "npm:22.18.13"
     "@types/pako": "npm:2.0.4"
-    better-sqlite3: "npm:12.2.0"
+    better-sqlite3: "npm:12.4.1"
     chalk: "npm:5.4.1"
     express: "npm:4.21.2"
     express-fileupload: "npm:1.5.2"
@@ -2069,14 +2069,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"better-sqlite3@npm:12.2.0":
-  version: 12.2.0
-  resolution: "better-sqlite3@npm:12.2.0"
+"better-sqlite3@npm:12.4.1":
+  version: 12.4.1
+  resolution: "better-sqlite3@npm:12.4.1"
   dependencies:
     bindings: "npm:^1.5.0"
     node-gyp: "npm:latest"
     prebuild-install: "npm:^7.1.1"
-  checksum: 10c0/842247e9bbb775f366ac91f604117112c312497e643bac21648d8b69f479763de0ac049b14b609d6d5ecaee50debcc09a854f682d3dc099a1d933fea92ce68d0
+  checksum: 10c0/88773a75d996b4171e5690a38459b05dc814a792701b224bd9909ee084dc0b4c64aaffbdbcf4bbbc6d4e247faf19e91b2a56cf4175d746d3bd9ff14764eb05aa
   languageName: node
   linkType: hard
 
