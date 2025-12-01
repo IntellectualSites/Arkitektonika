@@ -2006,7 +2006,7 @@ __metadata:
     multer: "npm:2.0.2"
     nanoid: "npm:5.1.6"
     nbt-ts: "npm:1.3.6"
-    nodemon: "npm:3.1.10"
+    nodemon: "npm:3.1.11"
     pako: "npm:2.1.0"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.9.3"
@@ -3766,9 +3766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:3.1.10":
-  version: 3.1.10
-  resolution: "nodemon@npm:3.1.10"
+"nodemon@npm:3.1.11":
+  version: 3.1.11
+  resolution: "nodemon@npm:3.1.11"
   dependencies:
     chokidar: "npm:^3.5.2"
     debug: "npm:^4"
@@ -3782,7 +3782,7 @@ __metadata:
     undefsafe: "npm:^2.0.5"
   bin:
     nodemon: bin/nodemon.js
-  checksum: 10c0/95b64d647f2c22e85e375b250517b0a4b32c2d2392ad898444e331f70d6b1ab43b17f53a8a1d68d5879ab8401fc6cd6e26f0d2a8736240984f6b5a8435b407c0
+  checksum: 10c0/f3c17897146f680eaf93f5e1f53b1fd4acbd61e4f7526ec6cbcc993d1c14cee8c722c41b30aa8b101447f672d38e6d7b17c97e77540df191d724826bb16ce474
   languageName: node
   linkType: hard
 
