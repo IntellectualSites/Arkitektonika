@@ -2025,7 +2025,7 @@ __metadata:
     chalk: "npm:5.6.2"
     express: "npm:4.22.1"
     express-fileupload: "npm:1.5.2"
-    express-slow-down: "npm:3.0.1"
+    express-slow-down: "npm:3.1.0"
     express-winston: "npm:4.2.0"
     minimist: "npm:1.2.8"
     multer: "npm:2.1.1"
@@ -2933,14 +2933,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-slow-down@npm:3.0.1":
-  version: 3.0.1
-  resolution: "express-slow-down@npm:3.0.1"
+"express-slow-down@npm:3.1.0":
+  version: 3.1.0
+  resolution: "express-slow-down@npm:3.1.0"
   dependencies:
     express-rate-limit: "npm:8"
   peerDependencies:
     express: 4 || 5 || ^5.0.0-beta.1
-  checksum: 10c0/0d954ff93d422744c31b73b565b04c0adf2b3f5824a30759846ddd02d536f0cbb4d47ab7fe389a3528f4d482e1b2c3916e32d806e8771d371bb46e009d81f088
+  checksum: 10c0/58c4494ed8d84fa52c3bc9b820e7f2a06059e2c70afa3323f1f009031f8438c978eed0e7b8d4eeb066489b6e8a8635dd812ecdf66a4b6b67971ce418ed4d6256
   languageName: node
   linkType: hard
 
