@@ -2029,7 +2029,7 @@ __metadata:
     express-winston: "npm:4.2.0"
     minimist: "npm:1.2.8"
     multer: "npm:2.1.1"
-    nanoid: "npm:5.1.7"
+    nanoid: "npm:5.1.9"
     nbt-ts: "npm:1.3.6"
     nodemon: "npm:3.1.14"
     pako: "npm:2.1.0"
@@ -3859,12 +3859,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:5.1.7":
-  version: 5.1.7
-  resolution: "nanoid@npm:5.1.7"
+"nanoid@npm:5.1.9":
+  version: 5.1.9
+  resolution: "nanoid@npm:5.1.9"
   bin:
     nanoid: bin/nanoid.js
-  checksum: 10c0/c5523bcb11031d2e8f4eb2ba96f99cd63cbe7f6776748035b4f292c6d524902b142b18a1bf0992e0039f9f925ef51154119bb19ee021766ec0a542d07dc51a82
+  checksum: 10c0/02cb4e48d30469eee3959795e2af6c113342e7f492906e43bd1e3c264d2dcee6c8236b0e441d4a9895b58c4ddb1c7c02170f63a2ca854a229cc4c7a544699cc1
   languageName: node
   linkType: hard
 
