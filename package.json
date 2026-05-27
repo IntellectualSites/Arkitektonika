@@ -70,5 +70,9 @@
     "@types/node": "24.12.2",
     "@types/pako": "2.0.4",
     "nodemon": "3.1.14"
+  },
+  "resolutions": {
+    "@types/express": "4.17.21",
+    "@types/express-serve-static-core": "4.17.43"
   }
 }

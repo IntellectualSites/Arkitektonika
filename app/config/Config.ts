@@ -16,10 +16,10 @@ export declare type Config = {
 
 const DEFAULT_CONFIG: Config = {
     port: 3000,
-    prune: 1000 * 60 * 30,
+    prune: 1000 * 60 * 60 * 24 * 14,
     maxIterations: 20,
-    maxSchematicSize: 1000 * 1000, // 1 MB
     allowedOrigin: '*',
+    maxSchematicSize: 10240 * 1024, // 10 MiB
     limiter: {
         windowMs: 1000 * 60,
         delayAfter: 30,

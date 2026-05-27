@@ -21,6 +21,7 @@ export default class ArkitektonikaServer {
            next();
         });
         this.app.use(this.logger.getExpressLogger());
+        this.app.set('trust proxy', 1);
 
         INDEX_ROUTER(app, this.app)
         UPLOAD_ROUTER(app, this.app)

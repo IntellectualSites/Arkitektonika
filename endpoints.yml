@@ -4,7 +4,7 @@ info:
   description: Collection of all available endpoints and their responses
   version: 1.0.0
 basePath: '/'
-host: 'api.schematic.cloud'
+host: 'api.schematic/cloud'
 paths:
   /upload:
     post:
