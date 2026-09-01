@@ -1430,10 +1430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pako@npm:2.0.4":
-  version: 2.0.4
-  resolution: "@types/pako@npm:2.0.4"
-  checksum: 10c0/5765bf8bc7e77ee141c454118f03e544b8f6cb51eb257d82dc5830feeab8cd00818af3a1eabefdfbe8dd3ae9916ed5403937bf1031a0ee51deea27fdf4dccdfb
+"@types/pako@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@types/pako@npm:3.0.0"
+  dependencies:
+    pako: "npm:*"
+  checksum: 10c0/ea49de4d409d1ab03fb63b0def6de097517e4ff5786a0e656d4a0abbec29797c344bd60ee1f991b4ee235aeb456ab548d44f9491d4431f1da129f1fcb5fd7610
   languageName: node
   linkType: hard
 
@@ -1638,7 +1640,7 @@ __metadata:
     "@types/gzip-js": "npm:0.3.5"
     "@types/minimist": "npm:1.2.5"
     "@types/node": "npm:24.13.3"
-    "@types/pako": "npm:2.0.4"
+    "@types/pako": "npm:3.0.0"
     better-sqlite3: "npm:13.0.3"
     chalk: "npm:6.0.0"
     express: "npm:4.22.2"
@@ -1650,7 +1652,7 @@ __metadata:
     nanoid: "npm:6.0.1"
     nbt-ts: "npm:1.3.6"
     nodemon: "npm:3.1.14"
-    pako: "npm:2.2.0"
+    pako: "npm:3.0.1"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.9.3"
     winston: "npm:3.19.0"
@@ -3337,10 +3339,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pako@npm:2.2.0":
-  version: 2.2.0
-  resolution: "pako@npm:2.2.0"
-  checksum: 10c0/e5d31de1940fdd13cc4014296b0026112483d0834bce4856ca29c8af8438d030c6416986a0f6df7d5372cae18d6dd6c57f48b24a49d6c207c0a4cc66af15c07d
+"pako@npm:*, pako@npm:3.0.1":
+  version: 3.0.1
+  resolution: "pako@npm:3.0.1"
+  checksum: 10c0/1292b2ffcbdf42f95be5519ffc11c4cb8daf065f7681936a5b0fe2028753396fbaea0c22cb22e54a4f12bb0c3217513f6b2261fa77e4dbf8c9bd76efe3eca2cc
   languageName: node
   linkType: hard
 
