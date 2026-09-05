@@ -45,9 +45,9 @@ export const DELETE_ROUTER = (app: Arkitektonika, router: express.Application) =
         return record;
     }
 
-    router.options('/delete/:key', (req, res) => {
+    router.options('/delete/:key', (req, res, next) => {
         res.setHeader('Access-Control-Allow-Methods', 'HEAD, DELETE');
-        res.sendStatus(204);
+        next();
     })
 
     router.head('/delete/:key', LIMITER, (async (req, res) => {
