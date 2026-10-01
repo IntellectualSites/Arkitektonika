@@ -45,7 +45,7 @@
     "@babel/runtime": "8.0.5",
     "better-sqlite3": "13.0.3",
     "chalk": "6.0.1",
-    "express": "4.22.2",
+    "express": "4.22.3",
     "express-fileupload": "1.5.2",
     "express-slow-down": "3.1.1",
     "express-winston": "4.2.0",
