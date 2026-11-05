@@ -39,10 +39,10 @@
     ]
   },
   "dependencies": {
-    "@babel/cli": "8.0.6",
-    "@babel/core": "8.0.6",
-    "@babel/preset-env": "8.0.6",
-    "@babel/runtime": "8.0.5",
+    "@babel/cli": "8.1.0",
+    "@babel/core": "8.1.0",
+    "@babel/preset-env": "8.0.7",
+    "@babel/runtime": "8.1.0",
     "better-sqlite3": "13.0.3",
     "chalk": "6.0.1",
     "express": "4.22.3",
