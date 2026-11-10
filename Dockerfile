@@ -9,7 +9,7 @@ COPY tsconfig.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./
 COPY ./app ./app
-RUN corepack enable ; yarn set version latest ; yarn install ; yarn build
+RUN npm install -g corepack@0.36.0 && corepack enable ; yarn set version latest ; yarn install ; yarn build
 
 # Application runner
 # -> runs the transpiled code itself
@@ -23,7 +23,7 @@ COPY package.json ./
 COPY yarn.lock ./
 COPY .yarnrc.yml ./
 COPY --from=builder /usr/src/app/dist/app ./app
-RUN corepack enable ; yarn set version latest; \
+RUN npm install -g corepack@0.36.0 && corepack enable ; yarn set version latest; \
     RUN yarn workspaces focus --all --production && rm -rf "$(yarn cache clean)" ; yarn install
 # "temporary" fix to allow directory traversal in both docker and non-docker environments
 # Can't just change the app directory, as that might break existing directory mounts - so it'll do
